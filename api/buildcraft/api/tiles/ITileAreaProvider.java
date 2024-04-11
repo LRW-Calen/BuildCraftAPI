@@ -1,10 +1,11 @@
 package buildcraft.api.tiles;
 
-import net.minecraft.util.math.BlockPos;
 
 import buildcraft.api.core.IAreaProvider;
+import net.minecraft.core.BlockPos;
 
 /** Used for more fine-grained control of whether or not a machine connects to the provider here. */
-public interface ITileAreaProvider extends IAreaProvider {
+public interface ITileAreaProvider extends IAreaProvider
+{
     boolean isValidFromLocation(BlockPos pos);
 }

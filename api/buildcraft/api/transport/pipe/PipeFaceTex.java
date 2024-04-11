@@ -2,7 +2,8 @@ package buildcraft.api.transport.pipe;
 
 import java.util.Arrays;
 
-public class PipeFaceTex {
+public class PipeFaceTex
+{
 
     private static final int SINGLE_WHITE_SPRITES_COUNT = 64;
     private static final PipeFaceTex[] SINGLE_WHITE_SPRITES;

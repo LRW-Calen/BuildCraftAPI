@@ -4,7 +4,8 @@
  * should be located as "LICENSE.API" in the BuildCraft source code distribution. */
 package buildcraft.api.statements;
 
-public final class StatementMouseClick {
+public final class StatementMouseClick
+{
     private int button;
     private boolean shift;
 

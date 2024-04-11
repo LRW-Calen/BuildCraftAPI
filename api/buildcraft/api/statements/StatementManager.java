@@ -4,24 +4,24 @@
  * should be located as "LICENSE.API" in the BuildCraft source code distribution. */
 package buildcraft.api.statements;
 
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.block.entity.BlockEntity;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-
-public final class StatementManager {
-
+public final class StatementManager
+{
+    // Calen: Thread Safety -> InvalidInputDataException: Unknown paramater type buildcraft:fillerParameterYDir
     public static Map<String, IStatement> statements = new HashMap<>();
+//    public static Map<Component, IStatement> statements = new ConcurrentHashMap<>();
     public static Map<String, IParameterReader> parameters = new HashMap<>();
+//    public static Map<Component, IParameterReader> parameters = new ConcurrentHashMap<>();
     public static Map<String, IParamReaderBuf> paramsBuf = new HashMap<>();
+//    public static Map<Component, IParamReaderBuf> paramsBuf = new ConcurrentHashMap<>();
     private static List<ITriggerProvider> triggerProviders = new LinkedList<>();
     private static List<IActionProvider> actionProviders = new LinkedList<>();
 
@@ -31,12 +31,12 @@ public final class StatementManager {
 
     @FunctionalInterface
     public interface IParameterReader {
-        IStatementParameter readFromNbt(NBTTagCompound nbt);
+        IStatementParameter readFromNbt(CompoundTag nbt);
     }
 
     @FunctionalInterface
     public interface IParamReaderBuf {
-        IStatementParameter readFromBuf(PacketBuffer buffer) throws IOException;
+        IStatementParameter readFromBuf(FriendlyByteBuf buffer) throws IOException;
     }
 
     /** Deactivate constructor */
@@ -55,28 +55,28 @@ public final class StatementManager {
     }
 
     public static void registerStatement(IStatement statement) {
-        statements.put(statement.getUniqueTag(), statement);
+        statements.put(statement.getUniqueTag().getString(), statement);
     }
 
     public static void registerParameter(IParameterReader reader) {
-        registerParameter(reader, buf -> reader.readFromNbt(buf.readCompoundTag()));
+        registerParameter(reader, buf -> reader.readFromNbt(buf.readNbt()));
     }
 
     public static void registerParameter(IParameterReader reader, IParamReaderBuf bufReader) {
-        String name = reader.readFromNbt(new NBTTagCompound()).getUniqueTag();
+        Component name = reader.readFromNbt(new CompoundTag()).getUniqueTag();
         registerParameter(name, reader);
         registerParameter(name, bufReader);
     }
 
-    public static void registerParameter(String name, IParameterReader reader) {
-        parameters.put(name, reader);
+    public static void registerParameter(Component name, IParameterReader reader) {
+        parameters.put(name.getString(), reader);
     }
 
-    public static void registerParameter(String name, IParamReaderBuf reader) {
-        paramsBuf.put(name, reader);
+    public static void registerParameter(Component name, IParamReaderBuf reader) {
+        paramsBuf.put(name.getString(), reader);
     }
 
-    public static List<ITriggerExternal> getExternalTriggers(EnumFacing side, TileEntity entity) {
+    public static List<ITriggerExternal> getExternalTriggers(Direction side, BlockEntity entity) {
         if (entity instanceof IOverrideDefaultStatements) {
             List<ITriggerExternal> result = ((IOverrideDefaultStatements) entity).overrideTriggers();
             if (result != null) {
@@ -93,7 +93,7 @@ public final class StatementManager {
         return new ArrayList<>(triggers);
     }
 
-    public static List<IActionExternal> getExternalActions(EnumFacing side, TileEntity entity) {
+    public static List<IActionExternal> getExternalActions(Direction side, BlockEntity entity) {
         if (entity instanceof IOverrideDefaultStatements) {
             List<IActionExternal> result = ((IOverrideDefaultStatements) entity).overrideActions();
             if (result != null) {
@@ -130,7 +130,7 @@ public final class StatementManager {
         return new ArrayList<>(actions);
     }
 
-    public static List<ITriggerInternalSided> getInternalSidedTriggers(IStatementContainer container, EnumFacing side) {
+    public static List<ITriggerInternalSided> getInternalSidedTriggers(IStatementContainer container, Direction side) {
         LinkedHashSet<ITriggerInternalSided> triggers = new LinkedHashSet<>();
 
         for (ITriggerProvider provider : triggerProviders) {
@@ -140,7 +140,7 @@ public final class StatementManager {
         return new ArrayList<>(triggers);
     }
 
-    public static List<IActionInternalSided> getInternalSidedActions(IStatementContainer container, EnumFacing side) {
+    public static List<IActionInternalSided> getInternalSidedActions(IStatementContainer container, Direction side) {
         LinkedHashSet<IActionInternalSided> actions = new LinkedHashSet<>();
 
         for (IActionProvider provider : actionProviders) {

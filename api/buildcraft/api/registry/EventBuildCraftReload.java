@@ -1,18 +1,16 @@
 package buildcraft.api.registry;
 
-import java.util.Set;
+import com.google.gson.GsonBuilder;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
+import java.util.Set;
 
-import com.google.gson.GsonBuilder;
-
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.eventhandler.Event;
-
-public abstract class EventBuildCraftReload extends Event {
+public abstract class EventBuildCraftReload extends Event
+{
 
     /** The manager that is being reloaded. */
     public final IReloadableRegistryManager manager;

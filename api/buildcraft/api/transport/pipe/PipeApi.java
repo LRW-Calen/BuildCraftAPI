@@ -1,21 +1,26 @@
 package buildcraft.api.transport.pipe;
 
-import java.util.IdentityHashMap;
-import java.util.Map;
-
-import javax.annotation.Nonnull;
-
-import net.minecraftforge.common.capabilities.Capability;
-
-import buildcraft.api.core.CapabilitiesHelper;
-import buildcraft.api.mj.MjAPI;
+import buildcraft.api.mj.*;
 import buildcraft.api.transport.IInjectable;
 import buildcraft.api.transport.IStripesRegistry;
 import buildcraft.api.transport.pluggable.IPluggableRegistry;
 import buildcraft.api.transport.pluggable.PipePluggable;
+import buildcraft.lib.BCLib;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.common.capabilities.CapabilityToken;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
+import javax.annotation.Nonnull;
+import java.util.IdentityHashMap;
+import java.util.Map;
 
 /** The central holding class for all pipe related registers and methods. */
-public final class PipeApi {
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = BCLib.MODID) // Calen add for reg caps
+public final class PipeApi
+{
     public static IPipeRegistry pipeRegistry;
     public static IPluggableRegistry pluggableRegistry;
     public static IStripesRegistry stripeRegistry;
@@ -37,16 +42,16 @@ public final class PipeApi {
     public static final Map<PipeDefinition, PowerTransferInfo> powerTransferData = new IdentityHashMap<>();
 
     @Nonnull
-    public static final Capability<IPipeHolder> CAP_PIPE_HOLDER;
+    public static final Capability<IPipeHolder> CAP_PIPE_HOLDER = CapabilityManager.get(new CapabilityToken<>(){});
 
     @Nonnull
-    public static final Capability<IPipe> CAP_PIPE;
+    public static final Capability<IPipe> CAP_PIPE = CapabilityManager.get(new CapabilityToken<>(){});
 
     @Nonnull
-    public static final Capability<PipePluggable> CAP_PLUG;
+    public static final Capability<PipePluggable> CAP_PLUG = CapabilityManager.get(new CapabilityToken<>(){});
 
     @Nonnull
-    public static final Capability<IInjectable> CAP_INJECTABLE;
+    public static final Capability<IInjectable> CAP_INJECTABLE = CapabilityManager.get(new CapabilityToken<>(){});
 
     public static FluidTransferInfo getFluidTransferInfo(PipeDefinition def) {
         FluidTransferInfo info = fluidTransferData.get(def);
@@ -123,10 +128,20 @@ public final class PipeApi {
 
     // Internals
 
-    static {
-        CAP_PIPE = CapabilitiesHelper.registerCapability(IPipe.class);
-        CAP_PLUG = CapabilitiesHelper.registerCapability(PipePluggable.class);
-        CAP_PIPE_HOLDER = CapabilitiesHelper.registerCapability(IPipeHolder.class);
-        CAP_INJECTABLE = CapabilitiesHelper.registerCapability(IInjectable.class);
+//    static {
+//        CAP_PIPE = CapabilitiesHelper.registerCapability(IPipe.class);
+//        CAP_PLUG = CapabilitiesHelper.registerCapability(PipePluggable.class);
+//        CAP_PIPE_HOLDER = CapabilitiesHelper.registerCapability(IPipeHolder.class);
+//        CAP_INJECTABLE = CapabilitiesHelper.registerCapability(IInjectable.class);
+//    }
+
+    // Calen
+    @SubscribeEvent
+    public static void registerCapability(RegisterCapabilitiesEvent event)
+    {
+        event.register(IPipe.class);
+        event.register(PipePluggable.class);
+        event.register(IPipeHolder.class);
+        event.register(IInjectable.class);
     }
 }

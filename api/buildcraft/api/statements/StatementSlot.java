@@ -4,12 +4,14 @@
  * of the license located in http://www.mod-buildcraft.com/MMPL-1.0.txt */
 package buildcraft.api.statements;
 
-import java.util.Arrays;
-import java.util.Objects;
 
 import buildcraft.api.core.EnumPipePart;
 
-public class StatementSlot {
+import java.util.Arrays;
+import java.util.Objects;
+
+public class StatementSlot
+{
     public IStatement statement;
     public IStatementParameter[] parameters;
     public EnumPipePart part = EnumPipePart.CENTER;

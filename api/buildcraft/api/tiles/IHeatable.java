@@ -5,7 +5,8 @@
 package buildcraft.api.tiles;
 
 /** This interface should be implemented by Tile Entities which have an internal heat value. */
-public interface IHeatable {
+public interface IHeatable
+{
     /** @return The minimum heat value, in degrees. */
     double getMinHeatValue();
 

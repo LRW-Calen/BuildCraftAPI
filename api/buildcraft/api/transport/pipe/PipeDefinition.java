@@ -1,15 +1,18 @@
 package buildcraft.api.transport.pipe;
 
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraftforge.fml.ModContainer;
+import net.minecraftforge.fml.ModLoadingContext;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
-
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.ModContainer;
-
-public final class PipeDefinition {
+public final class PipeDefinition
+{
+    public final Item.Properties properties;
     public final ResourceLocation identifier;
     public final IPipeCreator logicConstructor;
     public final IPipeLoader logicLoader;
@@ -23,6 +26,7 @@ public final class PipeDefinition {
     private EnumPipeColourType colourType;
 
     public PipeDefinition(PipeDefinitionBuilder builder) {
+        this.properties = builder.properties;
         this.identifier = builder.identifier;
         this.textures = new String[builder.textureSuffixes.length];
         for (int i = 0; i < textures.length; i++) {
@@ -63,10 +67,16 @@ public final class PipeDefinition {
 
     @FunctionalInterface
     public interface IPipeLoader {
-        PipeBehaviour loadBehaviour(IPipe t, NBTTagCompound u);
+        PipeBehaviour loadBehaviour(IPipe t, CompoundTag u);
     }
 
     public static class PipeDefinitionBuilder {
+        public Item.Properties properties = new Item.Properties()
+                .rarity(Rarity.COMMON)
+                .durability(0)
+                .stacksTo(64)
+//                .tab(BCCreativeTab.BC_PIPES_TAB)
+                ;
         public ResourceLocation identifier;
         public String texturePrefix;
         public String[] textureSuffixes = { "" };
@@ -100,7 +110,7 @@ public final class PipeDefinition {
         }
 
         private static String getActiveModId() {
-            ModContainer mod = Loader.instance().activeModContainer();
+            ModContainer mod = ModLoadingContext.get().getActiveContainer();
             if (mod == null) {
                 throw new IllegalStateException(
                     "Cannot interact with PipeDefinition outside of an actively scoped mod!");

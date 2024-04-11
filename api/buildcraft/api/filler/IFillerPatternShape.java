@@ -4,14 +4,13 @@
  * should be located as "LICENSE.API" in the BuildCraft source code distribution. */
 package buildcraft.api.filler;
 
-import javax.annotation.Nullable;
-
-import net.minecraft.world.World;
-
 import buildcraft.api.statements.IStatementParameter;
 import buildcraft.api.statements.containers.IFillerStatementContainer;
+import net.minecraft.world.level.Level;
 
-/** {@code IFillerPattern} independent from {@link World} */
+import javax.annotation.Nullable;
+
+/** {@code IFillerPattern} independent from {@link Level} */
 public interface IFillerPatternShape extends IFillerPattern {
     /**
      * @param filledTemplate empty template

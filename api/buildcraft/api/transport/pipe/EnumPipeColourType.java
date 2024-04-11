@@ -1,6 +1,7 @@
 package buildcraft.api.transport.pipe;
 
-public enum EnumPipeColourType {
+public enum EnumPipeColourType
+{
     TRANSLUCENT,
     BORDER_OUTER,
     BORDER_INNER,

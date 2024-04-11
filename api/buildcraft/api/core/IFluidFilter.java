@@ -6,7 +6,8 @@ package buildcraft.api.core;
 
 import net.minecraftforge.fluids.FluidStack;
 
-public interface IFluidFilter {
+public interface IFluidFilter
+{
 
     boolean matches(FluidStack fluid);
 }

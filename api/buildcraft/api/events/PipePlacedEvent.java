@@ -4,18 +4,18 @@
  * should be located as "LICENSE.API" in the BuildCraft source code distribution. */
 package buildcraft.api.events;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.eventbus.api.Event;
 
-import net.minecraftforge.fml.common.eventhandler.Event;
-
-public class PipePlacedEvent extends Event {
-    public EntityPlayer player;
+public class PipePlacedEvent extends Event
+{
+    public Player player;
     public Item pipeType;
     public BlockPos pos;
 
-    public PipePlacedEvent(EntityPlayer player, Item pipeType, BlockPos pos) {
+    public PipePlacedEvent(Player player, Item pipeType, BlockPos pos) {
         this.player = player;
         this.pipeType = pipeType;
         this.pos = pos;

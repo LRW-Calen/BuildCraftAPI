@@ -1,8 +1,9 @@
 package buildcraft.api.transport.pipe;
 
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundTag;
 
-public final class PipeFlowType {
+public final class PipeFlowType
+{
     public final IFlowCreator creator;
     public final IFlowLoader loader;
 
@@ -27,6 +28,6 @@ public final class PipeFlowType {
 
     @FunctionalInterface
     public interface IFlowLoader {
-        PipeFlow loadFlow(IPipe t, NBTTagCompound u);
+        PipeFlow loadFlow(IPipe t, CompoundTag u);
     }
 }

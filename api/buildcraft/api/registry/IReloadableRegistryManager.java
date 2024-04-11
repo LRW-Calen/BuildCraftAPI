@@ -1,11 +1,12 @@
 package buildcraft.api.registry;
 
+import buildcraft.api.registry.IReloadableRegistry.PackType;
+
 import java.util.Map;
 import java.util.Set;
 
-import buildcraft.api.registry.IReloadableRegistry.PackType;
-
-public interface IReloadableRegistryManager {
+public interface IReloadableRegistryManager
+{
 
     PackType getType();
 

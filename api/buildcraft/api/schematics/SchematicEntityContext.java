@@ -1,20 +1,21 @@
 package buildcraft.api.schematics;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
+
 import javax.annotation.Nonnull;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-
-public class SchematicEntityContext {
+public class SchematicEntityContext
+{
     @Nonnull
-    public final World world;
+    public final Level world;
     @Nonnull
     public final BlockPos basePos;
     @Nonnull
     public final Entity entity;
 
-    public SchematicEntityContext(@Nonnull World world,
+    public SchematicEntityContext(@Nonnull Level world,
                                   @Nonnull BlockPos basePos,
                                   @Nonnull Entity entity) {
         this.world = world;
