@@ -3,7 +3,6 @@ package buildcraft.api.statements;
 import buildcraft.api.core.IConvertable;
 import buildcraft.api.core.render.ISprite;
 import com.google.common.collect.ImmutableList;
-import net.minecraft.network.chat.BaseComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;

@@ -11,6 +11,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.Map;
@@ -26,8 +27,7 @@ public enum CustomRotationHelper
     private final Map<Block, List<ICustomRotationHandler>> handlers = Maps.newIdentityHashMap();
 
     public void registerHandlerForAll(Class<? extends Block> blockClass, ICustomRotationHandler handler) {
-        // 不知道是不是应该这样遍历方块
-        for (Block block : Registry.BLOCK.stream().toList()) {
+        for (Block block : ForgeRegistries.BLOCKS) {
 
             Class<? extends Block> foundClass = block.getClass();
             if (blockClass.isAssignableFrom(foundClass)) {
