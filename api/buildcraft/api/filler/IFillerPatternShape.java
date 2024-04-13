@@ -22,8 +22,8 @@ public interface IFillerPatternShape extends IFillerPattern {
     @Override
     default IFilledTemplate createTemplate(IFillerStatementContainer filler, IStatementParameter[] params) {
         IFilledTemplate template = FillerManager.registry.createFilledTemplate(
-            filler.getBox().min(),
-            filler.getBox().size()
+                filler.getBox().min(),
+                filler.getBox().size()
         );
         if (!fillTemplate(template, params)) {
             return null;

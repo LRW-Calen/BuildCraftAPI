@@ -10,8 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.Locale;
 
 //public enum EnumRedstoneChipset implements IStringSerializable
-public enum EnumRedstoneChipset implements StringRepresentable
-{
+public enum EnumRedstoneChipset implements StringRepresentable {
     RED,
     IRON,
     GOLD,
@@ -20,12 +19,10 @@ public enum EnumRedstoneChipset implements StringRepresentable
 
     private final String name = name().toLowerCase(Locale.ROOT);
 
-    public ItemStack getStack(int stackSize)
-    {
+    public ItemStack getStack(int stackSize) {
 //        Item chipset = BCItems.Silicon.REDSTONE_CHIPSET;
         RegistryObject<Item> chipset = BCSiliconItems.chipsetRedstone;
-        if (chipset == null)
-        {
+        if (chipset == null) {
             return ItemStack.EMPTY;
         }
         // ordinal() -> meta
@@ -35,8 +32,7 @@ public enum EnumRedstoneChipset implements StringRepresentable
         // 3 石英
         // 4 钻石
 //        return new ItemStack(chipset, stackSize, ordinal());
-        switch (this)
-        {
+        switch (this) {
             case RED:
                 return new ItemStack(BCSiliconItems.chipsetRedstone.get(), stackSize);
             case IRON:
@@ -52,26 +48,21 @@ public enum EnumRedstoneChipset implements StringRepresentable
         }
     }
 
-    public ItemStack getStack()
-    {
+    public ItemStack getStack() {
         return getStack(1);
     }
 
-    public static EnumRedstoneChipset fromStack(ItemStack stack)
-    {
+    public static EnumRedstoneChipset fromStack(ItemStack stack) {
 //        if (stack == null)
-        if (stack == null || stack.getItem().getClass() != ItemRedstoneChipset.class)
-        {
+        if (stack == null || stack.getItem().getClass() != ItemRedstoneChipset.class) {
             return RED;
         }
 //        return fromOrdinal(stack.getMetadata());
         return ((ItemRedstoneChipset) stack.getItem()).type;
     }
 
-    public static EnumRedstoneChipset fromOrdinal(int ordinal)
-    {
-        if (ordinal < 0 || ordinal >= values().length)
-        {
+    public static EnumRedstoneChipset fromOrdinal(int ordinal) {
+        if (ordinal < 0 || ordinal >= values().length) {
             return RED;
         }
         return values()[ordinal];
@@ -79,8 +70,7 @@ public enum EnumRedstoneChipset implements StringRepresentable
 
     @Override
 //    public String getName()
-    public String getSerializedName()
-    {
+    public String getSerializedName() {
         return name;
     }
 }

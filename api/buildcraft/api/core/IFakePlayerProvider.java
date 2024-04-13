@@ -11,8 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.common.util.FakePlayer;
 
-public interface IFakePlayerProvider
-{
+public interface IFakePlayerProvider {
     /**
      * Returns the generic buildcraft fake player. Note that you shouldn't use this anymore, as you should store the
      * UUID of the real player who created the core or entity that calls this.

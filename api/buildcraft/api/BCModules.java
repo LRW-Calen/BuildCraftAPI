@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public enum BCModules implements IBuildCraftMod
-{
+public enum BCModules implements IBuildCraftMod {
     LIB,
     // Base module for all BC.
     CORE,
@@ -38,10 +37,8 @@ public enum BCModules implements IBuildCraftMod
     private final String modId = BUILDCRAFT + lowerCaseName;
     private boolean loaded;
 
-    private static void checkLoadStatus()
-    {
-        if (hasChecked)
-        {
+    private static void checkLoadStatus() {
+        if (hasChecked) {
             return;
         }
         load0();
@@ -50,10 +47,8 @@ public enum BCModules implements IBuildCraftMod
     /**
      * Performs the actual loading of {@link #checkLoadStatus()}, except this is thread safe.
      */
-    private static synchronized void load0()
-    {
-        if (hasChecked)
-        {
+    private static synchronized void load0() {
+        if (hasChecked) {
             return;
         }
         // Calen: loading events order is changed from 1.12.2 to 1.18.2...
@@ -63,16 +58,13 @@ public enum BCModules implements IBuildCraftMod
 //            throw new RuntimeException("You can only use BCModules.isLoaded from pre-init onwards!");
 //        }
         List<BCModules> found = new ArrayList<>(), missing = new ArrayList<>();
-        for (BCModules module : VALUES)
-        {
+        for (BCModules module : VALUES) {
             module.loaded = ModList.get().isLoaded(module.modId);
 
-            if (module.loaded)
-            {
+            if (module.loaded) {
                 found.add(module);
             }
-            else
-            {
+            else {
                 missing.add(module);
             }
         }
@@ -82,59 +74,48 @@ public enum BCModules implements IBuildCraftMod
     }
 
     @Nullable
-    public static BCModules getBcMod(String testModId)
-    {
-        for (BCModules mod : VALUES)
-        {
-            if (mod.modId.equals(testModId))
-            {
+    public static BCModules getBcMod(String testModId) {
+        for (BCModules mod : VALUES) {
+            if (mod.modId.equals(testModId)) {
                 return mod;
             }
         }
         return null;
     }
 
-    public static boolean isBcMod(String testModId)
-    {
+    public static boolean isBcMod(String testModId) {
         return getBcMod(testModId) != null;
     }
 
-    public static BCModules[] getLoadedModules()
-    {
+    public static BCModules[] getLoadedModules() {
         checkLoadStatus();
         return loadedModules;
     }
 
-    public static BCModules[] getMissingModules()
-    {
+    public static BCModules[] getMissingModules() {
         checkLoadStatus();
         return missingModules;
     }
 
     @Override
-    public String getModId()
-    {
+    public String getModId() {
         return modId;
     }
 
-    public boolean isLoaded()
-    {
+    public boolean isLoaded() {
         checkLoadStatus();
         return loaded;
     }
 
-    public ResourceLocation createLocation(String path)
-    {
+    public ResourceLocation createLocation(String path) {
         return new ResourceLocation(getModId(), path);
     }
 
-    public ModelResourceLocation createModelLocation(String path, String variant)
-    {
+    public ModelResourceLocation createModelLocation(String path, String variant) {
         return new ModelResourceLocation(getModId() + ":" + path + "#" + variant);
     }
 
-    public ModelResourceLocation createModelLocation(String pathAndVariant)
-    {
+    public ModelResourceLocation createModelLocation(String pathAndVariant) {
         return new ModelResourceLocation(getModId() + ":" + pathAndVariant);
     }
 }

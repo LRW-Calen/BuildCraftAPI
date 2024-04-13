@@ -12,8 +12,7 @@ import java.util.Locale;
 
 /** Provides a way to quickly enable or disable certain debug conditions via VM arguments or whether the client/server
  * is in a dev environment */
-public class BCDebugging
-{
+public class BCDebugging {
     public enum DebugStatus {
         NONE,
         ENABLE,
@@ -46,7 +45,8 @@ public class BCDebugging
             Method getBlockEntity = Level.class.getDeclaredMethod("getBlockEntity", BlockPos.class);
             BCLog.logger.info("[debugger] Method found: Level.getBlockEntity = " + getBlockEntity);
             isDev = true;
-        } catch (Throwable ignored) {
+        }
+        catch (Throwable ignored) {
             // If it didn't find it then we aren't in a dev environment
             isDev = false;
             BCLog.logger.info("[debugger] Not a dev environment!");
@@ -58,21 +58,26 @@ public class BCDebugging
         else if ("disable".equals(value)) {
             // let people disable the messages if they are in a dev environment but don't want messages.
             DEBUG_STATUS = DebugStatus.NONE;
-        } else if ("log".equals(value)) {
+        }
+        else if ("log".equals(value)) {
             // Some debugging options are more than just logging, so we will differentiate between them
             DEBUG_STATUS = DebugStatus.LOGGING_ONLY;
-        } else if (isDev) {
+        }
+        else if (isDev) {
             DEBUG_STATUS = DebugStatus.ENABLE;
-        } else {
+        }
+        else {
             // Most likely a built jar - don't spam people with info they probably don't need
             DEBUG_STATUS = DebugStatus.NONE;
         }
 
         if (DEBUG_STATUS == DebugStatus.ALL) {
             BCLog.logger.info("[debugger] Debugging automatically enabled for ALL of buildcraft. Prepare for log spam.");
-        } else if (DEBUG_STATUS == DebugStatus.LOGGING_ONLY) {
+        }
+        else if (DEBUG_STATUS == DebugStatus.LOGGING_ONLY) {
             BCLog.logger.info("[debugger] Debugging automatically enabled for some non-spammy parts of buildcraft.");
-        } else if (DEBUG_STATUS == DebugStatus.ENABLE) {
+        }
+        else if (DEBUG_STATUS == DebugStatus.ENABLE) {
             BCLog.logger.info("[debugger] Debugging not automatically enabled for all of buildcraft. Logging all possible debug options.");
             BCLog.logger.info("              To enable it for only logging messages add \"-Dbuildcraft.debug=log\" to your launch VM arguments");
             BCLog.logger.info("              To enable it for ALL debugging \"-Dbuildcraft.debug=all\" to your launch VM arguments");
@@ -97,7 +102,8 @@ public class BCDebugging
         if ("false".equals(actual)) {
             BCLog.logger.info("[debugger] Debugging manually disabled for \"" + option + "\" (" + type + ").");
             return false;
-        } else if ("true".equals(actual)) {
+        }
+        else if ("true".equals(actual)) {
             BCLog.logger.info("[debugger] Debugging enabled for \"" + option + "\" (" + type + ").");
             return true;
         }
@@ -108,7 +114,8 @@ public class BCDebugging
         if ("complex".equals(actual) || type.name.equals(actual)) {
             BCLog.logger.info("[debugger] Debugging enabled for \"" + option + "\" (" + type + ").");
             return true;
-        } else if (DEBUG_STATUS != DebugStatus.NONE) {
+        }
+        else if (DEBUG_STATUS != DebugStatus.NONE) {
             StringBuilder log = new StringBuilder();
             log.append("[debugger] To enable debugging for ");
             log.append(option);

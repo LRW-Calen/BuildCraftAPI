@@ -52,7 +52,7 @@ public class ResourceIdBlock extends ResourceId {
     public void writeToNBT(CompoundTag nbt) {
         super.writeToNBT(nbt);
 
-        int[] arr = new int[] { pos.getX(), pos.getY(), pos.getZ() };
+        int[] arr = new int[]{pos.getX(), pos.getY(), pos.getZ()};
         nbt.putIntArray("pos", arr);
 
         nbt.put("side", side.writeToNBT());

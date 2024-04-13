@@ -4,8 +4,7 @@ import net.minecraft.util.StringRepresentable;
 
 import java.util.Locale;
 
-public enum EnumPowerStage implements StringRepresentable
-{
+public enum EnumPowerStage implements StringRepresentable {
     BLUE,
     GREEN,
     YELLOW,

@@ -4,8 +4,7 @@ import buildcraft.api.properties.BuildCraftProperties;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.state.BlockState;
 
-public enum EnumMachineState implements StringRepresentable
-{
+public enum EnumMachineState implements StringRepresentable {
     OFF,
     ON,
     DONE;

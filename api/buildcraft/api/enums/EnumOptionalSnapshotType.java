@@ -8,8 +8,7 @@ import java.util.Locale;
  * Version of {@link EnumSnapshotType} with {@link EnumOptionalSnapshotType#NONE} value.
  * Shouldn't be used where it's possible to use {@link EnumSnapshotType}.
  */
-public enum EnumOptionalSnapshotType implements StringRepresentable
-{
+public enum EnumOptionalSnapshotType implements StringRepresentable {
     NONE(null),
     TEMPLATE(EnumSnapshotType.TEMPLATE),
     BLUEPRINT(EnumSnapshotType.BLUEPRINT);

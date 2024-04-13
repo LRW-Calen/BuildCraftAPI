@@ -9,8 +9,7 @@ import net.minecraftforge.eventbus.api.Cancelable;
 import net.minecraftforge.eventbus.api.Event;
 
 @Cancelable
-public class RobotPlacementEvent extends Event
-{
+public class RobotPlacementEvent extends Event {
     public Player player;
     public String robotProgram;
 

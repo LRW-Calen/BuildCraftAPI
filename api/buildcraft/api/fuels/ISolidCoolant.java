@@ -9,8 +9,7 @@ package buildcraft.api.fuels;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-public interface ISolidCoolant extends ICoolant
-{
+public interface ISolidCoolant extends ICoolant {
     FluidStack getFluidFromSolidCoolant(ItemStack stack);
 
     // Calen

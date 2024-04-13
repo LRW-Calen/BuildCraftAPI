@@ -6,8 +6,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Map;
 
-public interface IPipeRegistry
-{
+public interface IPipeRegistry {
     PipeDefinition getDefinition(ResourceLocation identifier);
 
     void registerPipe(PipeDefinition definition);

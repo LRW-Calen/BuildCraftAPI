@@ -8,8 +8,7 @@ import java.util.Locale;
 
 /** This interface should be implemented by any Tile Entity which wishes to have non-redstone automation (for example,
  * BuildCraft Gates, but also other mods which implement it, e.g. OpenComputers). */
-public interface IControllable
-{
+public interface IControllable {
     enum Mode {
         ON,
         OFF,

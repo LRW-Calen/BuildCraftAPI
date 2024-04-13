@@ -8,13 +8,15 @@ import net.minecraft.nbt.CompoundTag;
 
 public abstract class ResourceId {
 
-    protected ResourceId() {}
+    protected ResourceId() {
+    }
 
     public void writeToNBT(CompoundTag nbt) {
         nbt.putString("resourceName", RobotManager.getResourceIdName(getClass()));
     }
 
-    protected void readFromNBT(CompoundTag nbt) {}
+    protected void readFromNBT(CompoundTag nbt) {
+    }
 
     public static ResourceId load(CompoundTag nbt) {
         try {
@@ -22,7 +24,8 @@ public abstract class ResourceId {
             if (nbt.contains("class")) {
                 // Migration support for 6.4.x
                 cls = RobotManager.getResourceIdByLegacyClassName(nbt.getString("class"));
-            } else {
+            }
+            else {
                 cls = RobotManager.getResourceIdByName(nbt.getString("resourceName"));
             }
 
@@ -30,7 +33,8 @@ public abstract class ResourceId {
             id.readFromNBT(nbt);
 
             return id;
-        } catch (Throwable e) {
+        }
+        catch (Throwable e) {
             e.printStackTrace();
         }
 

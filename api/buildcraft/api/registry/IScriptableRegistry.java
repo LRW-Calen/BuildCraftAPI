@@ -54,7 +54,7 @@ public interface IScriptableRegistry<E> extends IReloadableRegistry<E> {
          * @throws JsonSyntaxException if the input {@link JsonObject} was either missing required fields or had the
          *             wrong type or data for those fields. */
         OptionallyDisabled<E> deserialize(ResourceLocation name, JsonObject obj, JsonDeserializationContext ctx)
-            throws JsonSyntaxException;
+                throws JsonSyntaxException;
     }
 
     /** Similar to {@link IEntryDeserializer} except that this guarantees that
@@ -69,7 +69,7 @@ public interface IScriptableRegistry<E> extends IReloadableRegistry<E> {
          * {@link #deserializeConst(ResourceLocation, JsonObject, JsonDeserializationContext)} directly. */
         @Override
         default OptionallyDisabled<E> deserialize(ResourceLocation name, JsonObject obj, JsonDeserializationContext ctx)
-            throws JsonSyntaxException {
+                throws JsonSyntaxException {
             return new OptionallyDisabled<>(deserializeConst(name, obj, ctx));
         }
 
@@ -80,7 +80,7 @@ public interface IScriptableRegistry<E> extends IReloadableRegistry<E> {
          * @throws JsonSyntaxException if the input {@link JsonObject} was either missing required fields or had the
          *             wrong type or data for those fields. */
         E deserializeConst(ResourceLocation name, JsonObject obj, JsonDeserializationContext ctx)
-            throws JsonSyntaxException;
+                throws JsonSyntaxException;
     }
 
     /** A simple wrapper which either contains the object, or a string with a reason why it is allowed to be null. */
@@ -111,7 +111,8 @@ public interface IScriptableRegistry<E> extends IReloadableRegistry<E> {
             final E o = object;
             if (o != null) {
                 return o;
-            } else {
+            }
+            else {
                 throw new IllegalStateException("This object has been disabled! You must call isPresent() first!");
             }
         }
@@ -121,7 +122,8 @@ public interface IScriptableRegistry<E> extends IReloadableRegistry<E> {
             final String r = reason;
             if (r != null) {
                 return r;
-            } else {
+            }
+            else {
                 throw new IllegalStateException("This object has not been disabled! You must call isPresent() first!");
             }
         }

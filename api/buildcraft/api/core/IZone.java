@@ -10,8 +10,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Random;
 
 /** Defines some volume in the world. This is not guaranteed to be fully connected to itself. */
-public interface IZone
-{
+public interface IZone {
     /** Returns the smallest possible distance that the pos would have to be changed by in order for
      * {@link #contains(Vec3)} to return true. If the position is already inside then this will return 0 */
     double distanceTo(BlockPos pos);

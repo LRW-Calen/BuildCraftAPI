@@ -18,7 +18,7 @@ public abstract class ListMatchHandler {
     public abstract boolean isValidSource(Type type, @Nonnull ItemStack stack);
 
     /** Get custom client examples.
-     * 
+     *
      * @param type
      * @param stack
      * @return A List (even empty!) if the examples satisfy this handler, null if iteration and .matches should be used

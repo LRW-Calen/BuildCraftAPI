@@ -14,8 +14,7 @@ import javax.annotation.Nonnull;
 import java.util.Collections;
 import java.util.List;
 
-public interface ISchematicEntity
-{
+public interface ISchematicEntity {
     void init(SchematicEntityContext context);
 
     Vec3 getPos();

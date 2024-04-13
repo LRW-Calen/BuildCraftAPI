@@ -1,6 +1,5 @@
 package buildcraft.api.core;
 
-public interface IEngineType
-{
+public interface IEngineType {
     String getItemModelLocation();
 }

@@ -8,8 +8,7 @@ import javax.annotation.Nonnull;
 
 
 /** Interface for pipes to implement if they can accept items in a similar fashion to BC pipes. */
-public interface IInjectable
-{
+public interface IInjectable {
     /** Tests to see if this pipe can accept items from the given direction. Useless to call this if you are going to
      * call {@link #injectItem(ItemStack, boolean, Direction, DyeColor, double)} straight after. */
     boolean canInjectItems(Direction from);

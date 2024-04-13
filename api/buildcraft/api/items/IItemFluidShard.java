@@ -6,7 +6,6 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
-public interface IItemFluidShard
-{
+public interface IItemFluidShard {
     void addFluidDrops(NonNullList<ItemStack> toDrop, @Nullable FluidStack fluid);
 }

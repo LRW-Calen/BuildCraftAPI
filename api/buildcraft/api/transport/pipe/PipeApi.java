@@ -1,6 +1,6 @@
 package buildcraft.api.transport.pipe;
 
-import buildcraft.api.mj.*;
+import buildcraft.api.mj.MjAPI;
 import buildcraft.api.transport.IInjectable;
 import buildcraft.api.transport.IStripesRegistry;
 import buildcraft.api.transport.pluggable.IPluggableRegistry;
@@ -19,8 +19,7 @@ import java.util.Map;
 
 /** The central holding class for all pipe related registers and methods. */
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = BCLib.MODID) // Calen add for reg caps
-public final class PipeApi
-{
+public final class PipeApi {
     public static IPipeRegistry pipeRegistry;
     public static IPluggableRegistry pluggableRegistry;
     public static IStripesRegistry stripeRegistry;
@@ -42,22 +41,27 @@ public final class PipeApi
     public static final Map<PipeDefinition, PowerTransferInfo> powerTransferData = new IdentityHashMap<>();
 
     @Nonnull
-    public static final Capability<IPipeHolder> CAP_PIPE_HOLDER = CapabilityManager.get(new CapabilityToken<>(){});
+    public static final Capability<IPipeHolder> CAP_PIPE_HOLDER = CapabilityManager.get(new CapabilityToken<>() {
+    });
 
     @Nonnull
-    public static final Capability<IPipe> CAP_PIPE = CapabilityManager.get(new CapabilityToken<>(){});
+    public static final Capability<IPipe> CAP_PIPE = CapabilityManager.get(new CapabilityToken<>() {
+    });
 
     @Nonnull
-    public static final Capability<PipePluggable> CAP_PLUG = CapabilityManager.get(new CapabilityToken<>(){});
+    public static final Capability<PipePluggable> CAP_PLUG = CapabilityManager.get(new CapabilityToken<>() {
+    });
 
     @Nonnull
-    public static final Capability<IInjectable> CAP_INJECTABLE = CapabilityManager.get(new CapabilityToken<>(){});
+    public static final Capability<IInjectable> CAP_INJECTABLE = CapabilityManager.get(new CapabilityToken<>() {
+    });
 
     public static FluidTransferInfo getFluidTransferInfo(PipeDefinition def) {
         FluidTransferInfo info = fluidTransferData.get(def);
         if (info == null) {
             return fluidInfoDefault;
-        } else {
+        }
+        else {
             return info;
         }
     }
@@ -66,7 +70,8 @@ public final class PipeApi
         PowerTransferInfo info = powerTransferData.get(def);
         if (info == null) {
             return powerInfoDefault;
-        } else {
+        }
+        else {
             return info;
         }
     }
@@ -98,7 +103,7 @@ public final class PipeApi
         public final boolean isReceiver;
 
         /** Sets resistancePerTick to be equal to lossPerTick when full power is being transferred, scaling down to 0.
-         * 
+         *
          * @param transferPerTick
          * @param lossPerTick
          * @param isReceiver */
@@ -107,7 +112,7 @@ public final class PipeApi
         }
 
         /** Sets lossPerTick to be equal to resistancePerTick when full power is being transferred.
-         * 
+         *
          * @param transferPerTick
          * @param resistancePerTick
          * @param isReceiver */
@@ -137,8 +142,7 @@ public final class PipeApi
 
     // Calen
     @SubscribeEvent
-    public static void registerCapability(RegisterCapabilitiesEvent event)
-    {
+    public static void registerCapability(RegisterCapabilitiesEvent event) {
         event.register(IPipe.class);
         event.register(PipePluggable.class);
         event.register(IPipeHolder.class);

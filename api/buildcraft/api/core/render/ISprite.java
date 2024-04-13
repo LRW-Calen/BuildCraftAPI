@@ -8,8 +8,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
  * <p>
  * <b> IMPORTANT: Unlike Minecraft's {@link TextureAtlasSprite} this uses co-ordinates between 0 and 1, rather than 0
  * and 16! </b> */
-public interface ISprite
-{
+public interface ISprite {
     /** Binds this sprites backing texture so that this sprite will be referenced when you use the results of
      * {@link #getInterpU(double)} and {@link #getInterpV(double)} */
     void bindTexture();

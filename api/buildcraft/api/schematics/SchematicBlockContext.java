@@ -7,8 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nonnull;
 
-public class SchematicBlockContext
-{
+public class SchematicBlockContext {
     @Nonnull
     public final Level world;
     @Nonnull

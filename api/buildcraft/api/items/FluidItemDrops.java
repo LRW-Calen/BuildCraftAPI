@@ -7,8 +7,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.registries.RegistryObject;
 
-public class FluidItemDrops
-{
+public class FluidItemDrops {
     public static RegistryObject<ItemFragileFluidContainer> item;
 
     public static void addFluidDrops(NonNullList<ItemStack> toDrop, FluidStack... fluids) {

@@ -10,8 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import javax.annotation.Nullable;
 
 /** This is implemented by objects containing Statements, such as Gates and TileEntities. */
-public interface IStatementContainer
-{
+public interface IStatementContainer {
     BlockEntity getTile();
 
     @Nullable

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
  * IIntegrationRecipeViewable. */
 public interface IIntegrationRecipeProvider {
     /** Gets an integration recipe for the given ingredients.
-     * 
+     *
      * @param target The center itemstack.
      * @param toIntegrate A list of stacks to try to integrate to the
      * @return */

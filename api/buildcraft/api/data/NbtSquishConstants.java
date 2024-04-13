@@ -9,12 +9,11 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.util.zip.GZIPInputStream;
 
-public class NbtSquishConstants
-{
+public class NbtSquishConstants {
     /** Default written NBT Tag type- this is provided by
      * {@link NbtIo#write(CompoundTag, DataOutput)} and
      * {@link NbtIo#read(DataInput, NbtAccounter)}.
-     * 
+     *
      * Generally more suited to smaller NBT tags, and it writes fairly quickly. Can quickly use up a lot of space for
      * larger/more complex tags so it is recommended that you also pass it through a GZIP compressor to take up a much
      * smaller space. */

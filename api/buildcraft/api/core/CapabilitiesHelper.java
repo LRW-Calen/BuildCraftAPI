@@ -20,8 +20,7 @@ import java.util.concurrent.Callable;
  * via the forge-recommended {@link CapabilityInject} route, or refer to the various fields in buildcraft api classes
  * containing the capability instances.
  */
-public class CapabilitiesHelper
-{
+public class CapabilitiesHelper {
 
     // ################
     //

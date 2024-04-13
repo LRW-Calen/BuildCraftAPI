@@ -10,8 +10,7 @@ import net.minecraft.util.StringRepresentable;
 import java.util.Locale;
 import java.util.Map;
 
-public enum EnumPipePart implements StringRepresentable
-{
+public enum EnumPipePart implements StringRepresentable {
     DOWN(Direction.DOWN),
     UP(Direction.UP),
     NORTH(Direction.NORTH),
@@ -39,7 +38,7 @@ public enum EnumPipePart implements StringRepresentable
         FACES = fromFacingArray(Direction.values());
         // 1.18.2 HORIZONTALS -> private BY_2D_DATA
 //        HORIZONTALS = fromFacingArray(Direction.HORIZONTALS);
-        HORIZONTALS = fromFacingArray(Direction.from2DDataValue(0),Direction.from2DDataValue(1),Direction.from2DDataValue(2),Direction.from2DDataValue(3));
+        HORIZONTALS = fromFacingArray(Direction.from2DDataValue(0), Direction.from2DDataValue(1), Direction.from2DDataValue(2), Direction.from2DDataValue(3));
 
     }
 
@@ -121,7 +120,8 @@ public enum EnumPipePart implements StringRepresentable
             StringTag nbtString = (StringTag) base;
             String string = nbtString.getAsString();
             return nameMap.getOrDefault(string, CENTER);
-        } else {
+        }
+        else {
             byte ord = ((NumericTag) base).getAsByte();
             if (ord < 0 || ord > 6) {
                 return CENTER;

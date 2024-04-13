@@ -11,8 +11,7 @@ import net.minecraftforge.eventbus.api.Cancelable;
 import net.minecraftforge.eventbus.api.Event;
 
 @Cancelable
-public class BlockInteractionEvent extends Event
-{
+public class BlockInteractionEvent extends Event {
     public final Player player;
     public final BlockState state;
 

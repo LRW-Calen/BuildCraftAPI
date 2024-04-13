@@ -20,8 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Designates a tile that can contain a pipe, up to 6 sided pluggables.
  */
-public interface IPipeHolder extends IRedstoneStatementContainer, MenuProvider
-{
+public interface IPipeHolder extends IRedstoneStatementContainer, MenuProvider {
     Level getPipeWorld();
 
     BlockPos getPipePos();
@@ -114,8 +113,7 @@ public interface IPipeHolder extends IRedstoneStatementContainer, MenuProvider
      */
     void onPlayerClose(Player player);
 
-    enum PipeMessageReceiver
-    {
+    enum PipeMessageReceiver {
         BEHAVIOUR(null),
         FLOW(null),
         PLUGGABLE_DOWN(Direction.DOWN),
@@ -130,12 +128,9 @@ public interface IPipeHolder extends IRedstoneStatementContainer, MenuProvider
         public static final PipeMessageReceiver[] VALUES = values();
         public static final PipeMessageReceiver[] PLUGGABLES = new PipeMessageReceiver[6];
 
-        static
-        {
-            for (PipeMessageReceiver type : VALUES)
-            {
-                if (type.face != null)
-                {
+        static {
+            for (PipeMessageReceiver type : VALUES) {
+                if (type.face != null) {
                     PLUGGABLES[type.face.ordinal()] = type;
                 }
             }
@@ -143,14 +138,12 @@ public interface IPipeHolder extends IRedstoneStatementContainer, MenuProvider
 
         public final Direction face;
 
-        PipeMessageReceiver(Direction face)
-        {
+        PipeMessageReceiver(Direction face) {
             this.face = face;
         }
     }
 
-    interface IWriter
-    {
+    interface IWriter {
         void write(FriendlyByteBuf buffer);
     }
 }

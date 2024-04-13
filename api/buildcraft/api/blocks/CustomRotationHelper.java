@@ -6,7 +6,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -16,8 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.List;
 import java.util.Map;
 
-public enum CustomRotationHelper
-{
+public enum CustomRotationHelper {
     INSTANCE;
 
     /* If you want to test your class-based rotation registration then add the system property
@@ -44,7 +42,8 @@ public enum CustomRotationHelper
             if (DEBUG) {
                 BCLog.logger.info("[api.rotation] Setting a rotation handler for core " + block.getRegistryName());
             }
-        } else if (DEBUG) {
+        }
+        else if (DEBUG) {
             BCLog.logger.info("[api.rotation] Adding another rotation handler for core " + block.getRegistryName());
         }
     }
@@ -55,7 +54,8 @@ public enum CustomRotationHelper
             forBlock.add(handler);
             handlers.put(block, forBlock);
             return true;
-        } else {
+        }
+        else {
             handlers.get(block).add(handler);
             return false;
         }

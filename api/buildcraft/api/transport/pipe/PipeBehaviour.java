@@ -37,10 +37,12 @@ public abstract class PipeBehaviour implements ICapabilityProvider {
         return nbt;
     }
 
-    public void writePayload(FriendlyByteBuf buffer, Dist side) {}
+    public void writePayload(FriendlyByteBuf buffer, Dist side) {
+    }
 
-//    public void readPayload(FriendlyByteBuf buffer, Dist side, MessageContext ctx) throws IOException {}
-    public void readPayload(FriendlyByteBuf buffer, NetworkDirection side, NetworkEvent.Context ctx) throws IOException{}
+    //    public void readPayload(FriendlyByteBuf buffer, Dist side, MessageContext ctx) throws IOException {}
+    public void readPayload(FriendlyByteBuf buffer, NetworkDirection side, NetworkEvent.Context ctx) throws IOException {
+    }
 
     /** @deprecated Replaced by {@link #getTextureData(Direction)}. */
     @Deprecated
@@ -72,9 +74,11 @@ public abstract class PipeBehaviour implements ICapabilityProvider {
         return false;
     }
 
-    public void onEntityCollide(Entity entity) {}
+    public void onEntityCollide(Entity entity) {
+    }
 
-    public void onTick() {}
+    public void onTick() {
+    }
 
     // Calen: getCapability(...).isPresent()
 //    @Override
@@ -89,5 +93,6 @@ public abstract class PipeBehaviour implements ICapabilityProvider {
         return LazyOptional.empty();
     }
 
-    public void addDrops(NonNullList<ItemStack> toDrop, int fortune) {}
+    public void addDrops(NonNullList<ItemStack> toDrop, int fortune) {
+    }
 }

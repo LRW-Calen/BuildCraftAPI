@@ -14,7 +14,7 @@ public abstract class RedstoneBoardRegistry {
     public static RedstoneBoardRegistry instance;
 
     /** Register a redstone board type.
-     * 
+     *
      * @param redstoneBoardNBT The RedstoneBoardNBT instance containing the board information.
      * @param microJoules MJ price of the board, in micro MJ. */
     public abstract void registerBoardType(RedstoneBoardNBT<?> redstoneBoardNBT, long microJoules);

@@ -11,26 +11,21 @@ import net.minecraftforge.fml.common.Mod;
 import javax.annotation.Nonnull;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = BCLib.MODID) // Calen add for reg caps
-public class TilesAPI
-{
+public class TilesAPI {
     @Nonnull
-    public static final Capability<IControllable> CAP_CONTROLLABLE = CapabilityManager.get(new CapabilityToken<>()
-    {
+    public static final Capability<IControllable> CAP_CONTROLLABLE = CapabilityManager.get(new CapabilityToken<>() {
     });
 
     @Nonnull
-    public static final Capability<IHasWork> CAP_HAS_WORK = CapabilityManager.get(new CapabilityToken<>()
-    {
+    public static final Capability<IHasWork> CAP_HAS_WORK = CapabilityManager.get(new CapabilityToken<>() {
     });
 
     @Nonnull
-    public static final Capability<IHeatable> CAP_HEATABLE = CapabilityManager.get(new CapabilityToken<>()
-    {
+    public static final Capability<IHeatable> CAP_HEATABLE = CapabilityManager.get(new CapabilityToken<>() {
     });
 
     @Nonnull
-    public static final Capability<ITileAreaProvider> CAP_TILE_AREA_PROVIDER = CapabilityManager.get(new CapabilityToken<>()
-    {
+    public static final Capability<ITileAreaProvider> CAP_TILE_AREA_PROVIDER = CapabilityManager.get(new CapabilityToken<>() {
     });
 
     // Calen: 1.18.2直接用CapabilityManager.get获取?
@@ -43,8 +38,7 @@ public class TilesAPI
 
     // Calen
     @SubscribeEvent
-    public static void registerCapability(RegisterCapabilitiesEvent event)
-    {
+    public static void registerCapability(RegisterCapabilitiesEvent event) {
         event.register(IControllable.class);
         event.register(IHasWork.class);
         event.register(IHeatable.class);

@@ -3,8 +3,7 @@ package buildcraft.api.transport;
 import buildcraft.api.transport.pipe.IPipeHolder;
 import net.minecraft.world.item.DyeColor;
 
-public interface IWireManager
-{
+public interface IWireManager {
 
     IPipeHolder getHolder();
 

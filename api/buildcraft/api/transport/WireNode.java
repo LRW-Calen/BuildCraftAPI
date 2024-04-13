@@ -7,8 +7,7 @@ import net.minecraft.core.Direction.AxisDirection;
 import java.util.EnumMap;
 import java.util.Map;
 
-public class WireNode
-{
+public class WireNode {
     public final BlockPos pos;
     public final EnumWirePart part;
     private final int hash;
@@ -31,7 +30,7 @@ public class WireNode
         if (getClass() != obj.getClass()) return false;
         WireNode other = (WireNode) obj;
         return part == other.part //
-            && pos.equals(other.pos);
+                && pos.equals(other.pos);
     }
 
     @Override
@@ -46,7 +45,8 @@ public class WireNode
         EnumWirePart nPart = EnumWirePart.get(nx, ny, nz);
         if (nx < 0 || ny < 0 || nz < 0 || nx > 1 || ny > 1 || nz > 1) {
             return new WireNode(pos.relative(face), nPart);
-        } else {
+        }
+        else {
             return new WireNode(pos, nPart);
         }
     }

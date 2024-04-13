@@ -45,13 +45,14 @@ public class MjBattery implements INBTSerializable<CompoundTag> {
     }
 
     /** Attempts to add power, but only if this is not already full.
-     * 
+     *
      * @param microJoulesToAdd The power to add.
      * @return The excess power. */
     public long addPowerChecking(long microJoulesToAdd, boolean simulate) {
         if (isFull()) {
             return microJoulesToAdd;
-        } else {
+        }
+        else {
             return addPower(microJoulesToAdd, simulate);
         }
     }
@@ -61,7 +62,7 @@ public class MjBattery implements INBTSerializable<CompoundTag> {
     }
 
     /** Attempts to extract exactly the given amount of power.
-     * 
+     *
      * @param power The amount of power to extract.
      * @return True if the power was removed, false if not. */
     public boolean extractPower(long power) {

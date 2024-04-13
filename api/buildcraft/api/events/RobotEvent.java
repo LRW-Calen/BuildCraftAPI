@@ -10,8 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.Cancelable;
 import net.minecraftforge.eventbus.api.Event;
 
-public abstract class RobotEvent extends Event
-{
+public abstract class RobotEvent extends Event {
     public final EntityRobotBase robot;
 
     public RobotEvent(EntityRobotBase robot) {

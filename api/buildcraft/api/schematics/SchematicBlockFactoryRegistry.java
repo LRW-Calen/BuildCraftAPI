@@ -14,12 +14,11 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class SchematicBlockFactoryRegistry {
-//    private static final Set<SchematicBlockFactory<?>> FACTORIES = new TreeSet<>();
+    //    private static final Set<SchematicBlockFactory<?>> FACTORIES = new TreeSet<>();
     private static final Set<SchematicBlockFactory<?>> FACTORIES = new ConcurrentSkipListSet<>();
 
     // Calen thread safety: sometimes "air" not registered just after BCBuildersSchematics#preInit:registerSchematicFactory("air", 0, SchematicBlockAir::predicate, SchematicBlockAir::new)
-    public synchronized static Set<SchematicBlockFactory<?>> getFactoriesSynchronized()
-    {
+    public synchronized static Set<SchematicBlockFactory<?>> getFactoriesSynchronized() {
         return FACTORIES;
     }
 
@@ -29,10 +28,10 @@ public class SchematicBlockFactoryRegistry {
                                                                    Supplier<S> supplier) {
 //        FACTORIES.add(new SchematicBlockFactory<>(
         getFactoriesSynchronized().add(new SchematicBlockFactory<>(
-            BuildCraftAPI.nameToResourceLocation(name),
-            priority,
-            predicate,
-            supplier
+                BuildCraftAPI.nameToResourceLocation(name),
+                priority,
+                predicate,
+                supplier
         ));
     }
 
@@ -41,10 +40,10 @@ public class SchematicBlockFactoryRegistry {
                                                                    List<Block> blocks,
                                                                    Supplier<S> supplier) {
         registerFactory(
-            name,
-            priority,
-            context -> blocks.contains(context.block),
-            supplier
+                name,
+                priority,
+                context -> blocks.contains(context.block),
+                supplier
         );
     }
 
@@ -58,17 +57,17 @@ public class SchematicBlockFactoryRegistry {
         // noinspection unchecked
 //        return (SchematicBlockFactory<S>) FACTORIES.stream()
         return (SchematicBlockFactory<S>) getFactoriesSynchronized().stream()
-            .filter(schematicBlockFactory -> schematicBlockFactory.clazz == instance.getClass())
-            .findFirst()
-            .orElseThrow(() -> new IllegalStateException("Didn't find a factory for " + instance.getClass()));
+                .filter(schematicBlockFactory -> schematicBlockFactory.clazz == instance.getClass())
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Didn't find a factory for " + instance.getClass()));
     }
 
     @Nullable
     public static SchematicBlockFactory<?> getFactoryByName(ResourceLocation name) {
 //        return FACTORIES.stream()
         return getFactoriesSynchronized().stream()
-            .filter(schematicBlockFactory -> schematicBlockFactory.name.equals(name))
-            .findFirst()
-            .orElse(null);
+                .filter(schematicBlockFactory -> schematicBlockFactory.name.equals(name))
+                .findFirst()
+                .orElse(null);
     }
 }

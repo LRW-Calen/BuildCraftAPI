@@ -10,8 +10,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public interface IGuiSlot extends IConvertable
-{
+public interface IGuiSlot extends IConvertable {
     /**
      * Every statement needs a unique tag, it should be in the format of "&lt;modid&gt;:&lt;name&gt;".
      *
@@ -35,12 +34,10 @@ public interface IGuiSlot extends IConvertable
      * @return The full tooltip for the UI.
      */
     @OnlyIn(Dist.CLIENT)
-    default List<Component> getTooltip()
-    {
+    default List<Component> getTooltip() {
 //        String desc = getDescription();
         Component desc = getDescription();
-        if (desc == null)
-        {
+        if (desc == null) {
             return ImmutableList.of();
         }
 //        return ImmutableList.of(new TextComponent(desc));
@@ -49,11 +46,9 @@ public interface IGuiSlot extends IConvertable
 
     // Calen
     @OnlyIn(Dist.CLIENT)
-    default List<String> getTooltipKey()
-    {
+    default List<String> getTooltipKey() {
         String desc = getDescriptionKey();
-        if (desc == null)
-        {
+        if (desc == null) {
             return ImmutableList.of();
         }
 //        return ImmutableList.of(new TextComponent(desc));

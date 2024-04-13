@@ -11,11 +11,10 @@ import javax.annotation.Nonnull;
 
 /** This interface provides a convenient means of dealing with entire classes of items without having to specify each
  * item individually. */
-public interface IStackFilter
-{
+public interface IStackFilter {
 
     /** Check to see if a given stack matches this filter.
-     * 
+     *
      * @param stack The stack to test. stack.isEmpty will always return false.
      * @return True if it does match, false otherwise. */
     boolean matches(@Nonnull ItemStack stack);

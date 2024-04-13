@@ -9,8 +9,7 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public enum EnumEngineType implements StringRepresentable, IEngineType
-{
+public enum EnumEngineType implements StringRepresentable, IEngineType {
     WOOD("core", "wood"),
     STONE("energy", "stone"),
     IRON("energy", "iron"),
@@ -29,33 +28,26 @@ public enum EnumEngineType implements StringRepresentable, IEngineType
     @OnlyIn(Dist.CLIENT)
     private TextureAtlasSprite particle;
 
-    EnumEngineType(String mod, String loc)
-    {
+    EnumEngineType(String mod, String loc) {
         unlocalizedTag = loc;
         resourceLocation = "buildcraft" + mod + ":blocks/engine/inv/" + loc;
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void setModel(ModelHolderVariable model)
-    {
+    public void setModel(ModelHolderVariable model) {
         this.model = model;
     }
 
     @OnlyIn(Dist.CLIENT)
-    public ModelHolderVariable getModel()
-    {
+    public ModelHolderVariable getModel() {
         return model;
     }
 
     @OnlyIn(Dist.CLIENT)
-    public TextureAtlasSprite getPticle()
-    {
-        if (particle == null)
-        {
-            for (MutableQuad quad : model.getCutoutQuads())
-            {
-                if (quad.getFace() == Direction.DOWN)
-                {
+    public TextureAtlasSprite getPticle() {
+        if (particle == null) {
+            for (MutableQuad quad : model.getCutoutQuads()) {
+                if (quad.getFace() == Direction.DOWN) {
                     particle = quad.getSprite();
                     break;
                 }
@@ -65,21 +57,17 @@ public enum EnumEngineType implements StringRepresentable, IEngineType
     }
 
     @Override
-    public String getItemModelLocation()
-    {
+    public String getItemModelLocation() {
         return resourceLocation;
     }
 
     @Override
-    public String getSerializedName()
-    {
+    public String getSerializedName() {
         return unlocalizedTag;
     }
 
-    public static EnumEngineType fromMeta(int meta)
-    {
-        if (meta < 0 || meta >= VALUES.length)
-        {
+    public static EnumEngineType fromMeta(int meta) {
+        if (meta < 0 || meta >= VALUES.length) {
             meta = 0;
         }
         return VALUES[meta];

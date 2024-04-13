@@ -4,8 +4,7 @@ import net.minecraft.util.StringRepresentable;
 
 import java.util.Locale;
 
-public enum EnumDecoratedBlock implements StringRepresentable
-{
+public enum EnumDecoratedBlock implements StringRepresentable {
     DESTROY(0),
     BLUEPRINT(10),
     TEMPLATE(10),

@@ -7,21 +7,19 @@ package buildcraft.api.statements;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 import java.io.IOException;
 import java.util.*;
 
-public final class StatementManager
-{
+public final class StatementManager {
     // Calen: Thread Safety -> InvalidInputDataException: Unknown paramater type buildcraft:fillerParameterYDir
     public static Map<String, IStatement> statements = new HashMap<>();
-//    public static Map<Component, IStatement> statements = new ConcurrentHashMap<>();
+    //    public static Map<Component, IStatement> statements = new ConcurrentHashMap<>();
     public static Map<String, IParameterReader> parameters = new HashMap<>();
-//    public static Map<Component, IParameterReader> parameters = new ConcurrentHashMap<>();
+    //    public static Map<Component, IParameterReader> parameters = new ConcurrentHashMap<>();
     public static Map<String, IParamReaderBuf> paramsBuf = new HashMap<>();
-//    public static Map<Component, IParamReaderBuf> paramsBuf = new ConcurrentHashMap<>();
+    //    public static Map<Component, IParamReaderBuf> paramsBuf = new ConcurrentHashMap<>();
     private static List<ITriggerProvider> triggerProviders = new LinkedList<>();
     private static List<IActionProvider> actionProviders = new LinkedList<>();
 
@@ -40,7 +38,8 @@ public final class StatementManager
     }
 
     /** Deactivate constructor */
-    private StatementManager() {}
+    private StatementManager() {
+    }
 
     public static void registerTriggerProvider(ITriggerProvider provider) {
         if (provider != null && !triggerProviders.contains(provider)) {

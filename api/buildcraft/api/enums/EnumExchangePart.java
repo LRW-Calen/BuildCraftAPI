@@ -4,8 +4,7 @@ import net.minecraft.util.StringRepresentable;
 
 import java.util.Locale;
 
-public enum EnumExchangePart implements StringRepresentable
-{
+public enum EnumExchangePart implements StringRepresentable {
     START,
     MIDDLE,
     END;
@@ -13,8 +12,7 @@ public enum EnumExchangePart implements StringRepresentable
     private final String lowerCaseName = name().toLowerCase(Locale.ROOT);
 
     @Override
-    public String getSerializedName()
-    {
+    public String getSerializedName() {
         return lowerCaseName;
     }
 }

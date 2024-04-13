@@ -21,7 +21,7 @@ public interface IStatement extends IGuiSlot {
      * this checks the classes of the old and new parameters, however it is sensible to override this check in case the
      * parameters given no longer match. For example if you return {@link StatementParameterItemStack} from
      * {@link #createParameter(int)} and require the stack to match a filter, but the incoming stack might not.
-     * 
+     *
      * @param old
      * @param index
      * @return */
@@ -29,7 +29,8 @@ public interface IStatement extends IGuiSlot {
         IStatementParameter _new = createParameter(index);
         if (old == null || _new == null) {
             return _new;
-        } else if (old.getClass() == _new.getClass()) {
+        }
+        else if (old.getClass() == _new.getClass()) {
             return old;
         }
         return _new;

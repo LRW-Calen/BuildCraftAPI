@@ -20,8 +20,7 @@ import net.minecraftforge.network.NetworkDirection;
 import javax.annotation.Nonnull;
 import java.io.IOException;
 
-public abstract class PipeFlow implements ICapabilityProvider
-{
+public abstract class PipeFlow implements ICapabilityProvider {
     /**
      * The ID for completely refreshing the state of this flow.
      */
@@ -34,43 +33,36 @@ public abstract class PipeFlow implements ICapabilityProvider
 
     public final IPipe pipe;
 
-    public PipeFlow(IPipe pipe)
-    {
+    public PipeFlow(IPipe pipe) {
         this.pipe = pipe;
     }
 
-    public PipeFlow(IPipe pipe, CompoundTag nbt)
-    {
+    public PipeFlow(IPipe pipe, CompoundTag nbt) {
         this.pipe = pipe;
     }
 
-    public CompoundTag writeToNbt()
-    {
+    public CompoundTag writeToNbt() {
         return new CompoundTag();
     }
 
     /**
      * Writes a payload with the specified id. Standard ID's are NET_ID_FULL_STATE and NET_ID_UPDATE.
      */
-    public void writePayload(int id, FriendlyByteBuf buffer, Dist side)
-    {
+    public void writePayload(int id, FriendlyByteBuf buffer, Dist side) {
     }
 
     /**
      * Reads a payload with the specified id. Standard ID's are NET_ID_FULL_STATE and NET_ID_UPDATE.
      */
-    public void readPayload(int id, FriendlyByteBuf buffer, NetworkDirection side) throws IOException
-    {
+    public void readPayload(int id, FriendlyByteBuf buffer, NetworkDirection side) throws IOException {
     }
 
-    public void sendPayload(int id)
-    {
+    public void sendPayload(int id) {
         final Dist side = pipe.getHolder().getPipeWorld().isClientSide ? Dist.CLIENT : Dist.DEDICATED_SERVER;
         sendCustomPayload(id, (buf) -> writePayload(id, buf, side));
     }
 
-    public final void sendCustomPayload(int id, IWriter writer)
-    {
+    public final void sendCustomPayload(int id, IWriter writer) {
         pipe.getHolder().sendMessage(PipeMessageReceiver.FLOW, buffer ->
         {
             buffer.writeBoolean(true);
@@ -87,22 +79,18 @@ public abstract class PipeFlow implements ICapabilityProvider
      * Used to force a connection to a given tile, even if the {@link PipeBehaviour} wouldn't normally connect to
      * it.
      */
-    public boolean shouldForceConnection(Direction face, BlockEntity oTile)
-    {
+    public boolean shouldForceConnection(Direction face, BlockEntity oTile) {
         return false;
     }
 
-    public void onTick()
-    {
+    public void onTick() {
     }
 
-    public void addDrops(NonNullList<ItemStack> toDrop, int fortune)
-    {
+    public void addDrops(NonNullList<ItemStack> toDrop, int fortune) {
     }
 
     public boolean onFlowActivate(Player player, HitResult trace, float hitX, float hitY, float hitZ,
-                                  EnumPipePart part)
-    {
+                                  EnumPipePart part) {
         return false;
     }
 
@@ -114,8 +102,7 @@ public abstract class PipeFlow implements ICapabilityProvider
 //    }
 
     @Override
-    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, Direction facing)
-    {
+    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, Direction facing) {
         return LazyOptional.empty();
     }
 }

@@ -11,13 +11,12 @@ import net.minecraft.world.level.block.state.properties.Property;
 
 import java.util.Map;
 
-public final class BuildCraftProperties
-{
+public final class BuildCraftProperties {
     public static final Property<Direction> BLOCK_FACING = EnumProperty.create("facing", Direction.class, new Direction[]{Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST});
     public static final Property<Direction> BLOCK_FACING_6 = EnumProperty.create("facing", Direction.class);
 
     public static final Property<DyeColor> BLOCK_COLOR = EnumProperty.create("color", DyeColor.class);
-//    public static final EnumProperty<EnumSpring> SPRING_TYPE = EnumProperty.create("type", EnumSpring.class);
+    //    public static final EnumProperty<EnumSpring> SPRING_TYPE = EnumProperty.create("type", EnumSpring.class);
     public static final Property<EnumEngineType> ENGINE_TYPE = EnumProperty.create("type", EnumEngineType.class);
     public static final Property<EnumLaserTableType> LASER_TABLE_TYPE = EnumProperty.create("type", EnumLaserTableType.class);
     public static final Property<EnumMachineState> MACHINE_STATE = EnumProperty.create("state", EnumMachineState.class);
@@ -74,8 +73,7 @@ public final class BuildCraftProperties
      */
     public static final int UPDATE_ALL = UPDATE_NEIGHBOURS + MARK_BLOCK_FOR_UPDATE + UPDATE_EVEN_CLIENT;
 
-    static
-    {
+    static {
         Map<Direction, Property<Boolean>> map = Maps.newEnumMap(Direction.class);
         map.put(Direction.DOWN, CONNECTED_DOWN);
         map.put(Direction.UP, CONNECTED_UP);
@@ -95,7 +93,6 @@ public final class BuildCraftProperties
     /**
      * Deactivate constructor
      */
-    private BuildCraftProperties()
-    {
+    private BuildCraftProperties() {
     }
 }

@@ -6,8 +6,7 @@ import net.minecraft.world.level.Level;
 
 import javax.annotation.Nonnull;
 
-public class SchematicEntityContext
-{
+public class SchematicEntityContext {
     @Nonnull
     public final Level world;
     @Nonnull

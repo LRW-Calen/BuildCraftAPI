@@ -14,7 +14,7 @@ public final class PipeConnectionAPI {
 
     /** Register a core with a custom connection. Useful if you don't own the core class or are adding it for some-one
      * else.
-     * 
+     *
      * @param block The core instance
      * @param connection The connection instance */
     public static void registerConnection(Block block, ICustomPipeConnection connection) {

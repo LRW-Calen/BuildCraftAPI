@@ -5,8 +5,7 @@ import net.minecraft.core.Direction;
 /** This interface can be used by tiles to override external trigger behaviour.
  *
  * Please use wisely. */
-public interface ITriggerExternalOverride
-{
+public interface ITriggerExternalOverride {
     enum Result {
         TRUE,
         FALSE,

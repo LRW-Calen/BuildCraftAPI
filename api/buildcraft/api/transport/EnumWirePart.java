@@ -6,8 +6,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public enum EnumWirePart
-{
+public enum EnumWirePart {
     EAST_UP_SOUTH(true, true, true),
     EAST_UP_NORTH(true, true, false),
     EAST_DOWN_SOUTH(true, false, true),
@@ -31,8 +30,7 @@ public enum EnumWirePart
      */
     public final VoxelShape boundingBoxPossible;
 
-    EnumWirePart(boolean x, boolean y, boolean z)
-    {
+    EnumWirePart(boolean x, boolean y, boolean z) {
         this.x = x ? AxisDirection.POSITIVE : AxisDirection.NEGATIVE;
         this.y = y ? AxisDirection.POSITIVE : AxisDirection.NEGATIVE;
         this.z = z ? AxisDirection.POSITIVE : AxisDirection.NEGATIVE;
@@ -56,10 +54,8 @@ public enum EnumWirePart
         );
     }
 
-    public AxisDirection getDirection(Direction.Axis axis)
-    {
-        switch (axis)
-        {
+    public AxisDirection getDirection(Direction.Axis axis) {
+        switch (axis) {
             case X:
                 return x;
             case Y:
@@ -71,35 +67,27 @@ public enum EnumWirePart
         }
     }
 
-    public static EnumWirePart get(int x, int y, int z)
-    {
+    public static EnumWirePart get(int x, int y, int z) {
         boolean bx = (x % 2 + 2) % 2 == 1;
         boolean by = (y % 2 + 2) % 2 == 1;
         boolean bz = (z % 2 + 2) % 2 == 1;
         return get(bx, by, bz);
     }
 
-    public static EnumWirePart get(boolean x, boolean y, boolean z)
-    {
-        if (x)
-        {
-            if (y)
-            {
+    public static EnumWirePart get(boolean x, boolean y, boolean z) {
+        if (x) {
+            if (y) {
                 return z ? EAST_UP_SOUTH : EAST_UP_NORTH;
             }
-            else
-            {
+            else {
                 return z ? EAST_DOWN_SOUTH : EAST_DOWN_NORTH;
             }
         }
-        else
-        {
-            if (y)
-            {
+        else {
+            if (y) {
                 return z ? WEST_UP_SOUTH : WEST_UP_NORTH;
             }
-            else
-            {
+            else {
                 return z ? WEST_DOWN_SOUTH : WEST_DOWN_NORTH;
             }
         }

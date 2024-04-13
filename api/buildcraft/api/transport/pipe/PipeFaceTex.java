@@ -2,8 +2,7 @@ package buildcraft.api.transport.pipe;
 
 import java.util.Arrays;
 
-public class PipeFaceTex
-{
+public class PipeFaceTex {
 
     private static final int SINGLE_WHITE_SPRITES_COUNT = 64;
     private static final PipeFaceTex[] SINGLE_WHITE_SPRITES;
@@ -63,10 +62,12 @@ public class PipeFaceTex
         }
         if (textures.length == 0) {
             hash = -1;
-        } else if (textures.length == 1) {
+        }
+        else if (textures.length == 1) {
             // If the colour is -1 then this will equal the hash below
             hash = textures[0] + getColour(0) + 1;
-        } else {
+        }
+        else {
             int[] cArr = colours;
             {
                 int prevLength = cArr.length;
@@ -87,7 +88,7 @@ public class PipeFaceTex
     }
 
     private PipeFaceTex(int singleTexture) {
-        textures = new int[] { singleTexture };
+        textures = new int[]{singleTexture};
         colours = EMPTY_INT_ARRAY;
         hash = singleTexture;
     }
@@ -121,7 +122,7 @@ public class PipeFaceTex
         if (!Arrays.equals(textures, other.textures)) {
             return false;
         }
-        for (int i = textures.length; i > 0;) {
+        for (int i = textures.length; i > 0; ) {
             i--;
             if (getColour(i) != other.getColour(i)) {
                 return false;

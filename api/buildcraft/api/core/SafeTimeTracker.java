@@ -7,8 +7,7 @@ package buildcraft.api.core;
 import net.minecraft.world.level.Level;
 
 /** Provides a way of tracking time in the world, without requiring manual ticking. */
-public class SafeTimeTracker
-{
+public class SafeTimeTracker {
 
     private long lastMark = Long.MIN_VALUE;
     private long duration = -1;
@@ -50,13 +49,15 @@ public class SafeTimeTracker
         if (currentTime < lastMark) {
             lastMark = currentTime;
             return false;
-        } else if (lastMark + delay + lastRandomDelay <= currentTime) {
+        }
+        else if (lastMark + delay + lastRandomDelay <= currentTime) {
             duration = currentTime - lastMark;
             lastMark = currentTime;
             lastRandomDelay = (int) (Math.random() * randomRange);
 
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }

@@ -11,15 +11,13 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import javax.annotation.Nullable;
 
-public interface IFlowFluid
-{
+public interface IFlowFluid {
     /**
      * @deprecated use the version below with a simulate paramater.
      */
     @Nullable
     @Deprecated
-    default FluidStack tryExtractFluid(int millibuckets, Direction from, FluidStack filter)
-    {
+    default FluidStack tryExtractFluid(int millibuckets, Direction from, FluidStack filter) {
 //        return tryExtractFluid(millibuckets, from, filter, false);
         return tryExtractFluid(millibuckets, from, filter, IFluidHandler.FluidAction.EXECUTE);
     }
@@ -38,8 +36,7 @@ public interface IFlowFluid
      * @deprecated use the version below with a simulate paramater.
      */
     @Deprecated
-    default InteractionResultHolder<FluidStack> tryExtractFluidAdv(int millibuckets, Direction from, IFluidFilter filter)
-    {
+    default InteractionResultHolder<FluidStack> tryExtractFluidAdv(int millibuckets, Direction from, IFluidFilter filter) {
 //        return tryExtractFluidAdv(millibuckets, from, filter, false);
         return tryExtractFluidAdv(millibuckets, from, filter, IFluidHandler.FluidAction.EXECUTE);
     }

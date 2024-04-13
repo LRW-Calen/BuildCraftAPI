@@ -36,31 +36,31 @@ public interface IMapLocation extends INamedItem {
     }
 
     /** This function can be used for SPOT types.
-     * 
+     *
      * @param stack
      * @return The point representing the map location. */
     BlockPos getPoint(@Nonnull ItemStack stack);
 
     /** This function can be used for SPOT and AREA types.
-     * 
+     *
      * @param stack
      * @return The box representing the map location. */
     IBox getBox(@Nonnull ItemStack stack);
 
     /** This function can be used for SPOT, AREA and ZONE types. The PATH type needs to be handled separately.
-     * 
+     *
      * @param stack
      * @return An IZone representing the map location - also an instance of IBox for SPOT and AREA types. */
     IZone getZone(@Nonnull ItemStack stack);
 
     /** This function can be used for SPOT and PATH types.
-     * 
+     *
      * @param stack
      * @return A list of BlockPoses representing the path the Map Location stores. */
     List<BlockPos> getPath(@Nonnull ItemStack stack);
 
     /** This function can be used for SPOT types only.
-     * 
+     *
      * @param stack
      * @return The side of the spot. */
     Direction getPointSide(@Nonnull ItemStack stack);

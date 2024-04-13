@@ -10,8 +10,7 @@ import buildcraft.api.core.EnumPipePart;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class StatementSlot
-{
+public class StatementSlot {
     public IStatement statement;
     public IStatementParameter[] parameters;
     public EnumPipePart part = EnumPipePart.CENTER;

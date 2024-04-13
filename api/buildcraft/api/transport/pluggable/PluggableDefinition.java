@@ -9,8 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nullable;
 
-public final class PluggableDefinition
-{
+public final class PluggableDefinition {
     public final ResourceLocation identifier;
 
     public final IPluggableNetLoader loader;
@@ -38,7 +37,7 @@ public final class PluggableDefinition
     }
 
     public PipePluggable loadFromBuffer(IPipeHolder holder, Direction side, FriendlyByteBuf buffer)
-        throws InvalidInputDataException {
+            throws InvalidInputDataException {
         return loader.loadFromBuffer(this, holder, side, buffer);
     }
 
@@ -48,26 +47,26 @@ public final class PluggableDefinition
          * exception if the wrong data is given) this should make a best effort to read the pluggable from nbt, or fall
          * back to sensible defaults. */
         PipePluggable readFromNbt(PluggableDefinition definition, IPipeHolder holder, Direction side,
-            CompoundTag nbt);
+                                  CompoundTag nbt);
     }
 
     @FunctionalInterface
     public interface IPluggableNetLoader {
         PipePluggable loadFromBuffer(PluggableDefinition definition, IPipeHolder holder, Direction side,
-            FriendlyByteBuf buffer) throws InvalidInputDataException;
+                                     FriendlyByteBuf buffer) throws InvalidInputDataException;
     }
 
     @FunctionalInterface
     public interface IPluggableCreator extends IPluggableNbtReader, IPluggableNetLoader {
         @Override
         default PipePluggable loadFromBuffer(PluggableDefinition definition, IPipeHolder holder, Direction side,
-            FriendlyByteBuf buffer) {
+                                             FriendlyByteBuf buffer) {
             return createSimplePluggable(definition, holder, side);
         }
 
         @Override
         default PipePluggable readFromNbt(PluggableDefinition definition, IPipeHolder holder, Direction side,
-            CompoundTag nbt) {
+                                          CompoundTag nbt) {
             return createSimplePluggable(definition, holder, side);
         }
 

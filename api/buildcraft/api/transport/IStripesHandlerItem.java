@@ -17,7 +17,7 @@ public interface IStripesHandlerItem {
      * except that the target stack will be set into its {@link InteractionHand#MAIN_HAND}. Any items left in the players
      * inventory will be returned back through the activator with
      * {@link IStripesActivator#sendItem(ItemStack, Direction)}
-     * 
+     *
      * @param world
      * @param pos
      * @param direction

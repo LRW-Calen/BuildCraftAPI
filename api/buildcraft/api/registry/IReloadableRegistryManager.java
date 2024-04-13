@@ -5,8 +5,7 @@ import buildcraft.api.registry.IReloadableRegistry.PackType;
 import java.util.Map;
 import java.util.Set;
 
-public interface IReloadableRegistryManager
-{
+public interface IReloadableRegistryManager {
 
     PackType getType();
 
@@ -34,7 +33,7 @@ public interface IReloadableRegistryManager
     Map<String, IReloadableRegistry<?>> getAllRegistries();
 
     /** Creates and registers a basic {@link IReloadableRegistry}.
-     * 
+     *
      * @param name The name for the given registry. This should be unique, and the best way of doing that is to prefix
      *            it with the modid, followed by a slash, and then the mod-unique name.
      * @throws IllegalArgumentException if name contains a colon. */
@@ -42,7 +41,7 @@ public interface IReloadableRegistryManager
 
     /** Scripts will be loaded from "[pack_type.prefix]/[pack_name]/compat/[entry_path]/". The entryPath parameter
      * should start with the modid.
-     * 
+     *
      * @param entryPath */
     <R> IScriptableRegistry<R> createScriptableRegistry(String entryPath);
 

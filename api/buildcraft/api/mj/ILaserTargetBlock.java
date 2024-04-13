@@ -7,7 +7,6 @@ package buildcraft.api.mj;
 /** This is a marker interface for laser targets. Implement it on your Block.
  *
  * It is used by BuildCraft Lasers for optimization purposes. */
-public interface ILaserTargetBlock
-{
+public interface ILaserTargetBlock {
 
 }

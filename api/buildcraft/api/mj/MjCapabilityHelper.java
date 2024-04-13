@@ -11,8 +11,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a quick way to return all types of a single {@link IMjConnector} for all the different capabilities.
  */
-public class MjCapabilityHelper implements ICapabilityProvider
-{
+public class MjCapabilityHelper implements ICapabilityProvider {
 
     @Nonnull
     private final IMjConnector connector;
@@ -29,8 +28,7 @@ public class MjCapabilityHelper implements ICapabilityProvider
     @Nullable
     private final IMjPassiveProvider provider;
 
-    public MjCapabilityHelper(@Nonnull IMjConnector mj)
-    {
+    public MjCapabilityHelper(@Nonnull IMjConnector mj) {
         this.connector = mj;
         this.receiver = mj instanceof IMjReceiver ? (IMjReceiver) mj : null;
         this.rsReceiver = mj instanceof IMjRedstoneReceiver ? (IMjRedstoneReceiver) mj : null;
@@ -47,32 +45,26 @@ public class MjCapabilityHelper implements ICapabilityProvider
 //    }
 
     @Override
-    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, Direction facing)
-    {
-        if (capability == MjAPI.CAP_CONNECTOR)
-        {
+    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, Direction facing) {
+        if (capability == MjAPI.CAP_CONNECTOR) {
 //            return MjAPI.CAP_CONNECTOR.cast(connector);
             return connector == null ? LazyOptional.empty() : LazyOptional.of(() -> connector).cast();
         }
-        if (capability == MjAPI.CAP_RECEIVER)
-        {
+        if (capability == MjAPI.CAP_RECEIVER) {
 //            return MjAPI.CAP_RECEIVER.cast(receiver);
             return receiver == null ? LazyOptional.empty() : LazyOptional.of(() -> receiver).cast();
         }
-        if (capability == MjAPI.CAP_REDSTONE_RECEIVER)
-        {
+        if (capability == MjAPI.CAP_REDSTONE_RECEIVER) {
 //            return MjAPI.CAP_REDSTONE_RECEIVER.cast(rsReceiver);
             return rsReceiver == null ? LazyOptional.empty() : LazyOptional.of(() -> rsReceiver).cast();
         }
-        if (capability == MjAPI.CAP_READABLE)
-        {
+        if (capability == MjAPI.CAP_READABLE) {
 //            return MjAPI.CAP_READABLE.cast(readable);
             return readable == null ? LazyOptional.empty() : LazyOptional.of(() -> readable).cast();
         }
-        if (capability == MjAPI.CAP_PASSIVE_PROVIDER)
-        {
+        if (capability == MjAPI.CAP_PASSIVE_PROVIDER) {
 //            return MjAPI.CAP_PASSIVE_PROVIDER.cast(provider);
-            return provider == null ? LazyOptional.empty() :LazyOptional.of(() -> provider).cast();
+            return provider == null ? LazyOptional.empty() : LazyOptional.of(() -> provider).cast();
         }
         return LazyOptional.empty();
     }

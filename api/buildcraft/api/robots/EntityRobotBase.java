@@ -19,7 +19,7 @@ import net.minecraftforge.items.IItemHandler;
 
 public abstract class EntityRobotBase extends LivingEntity implements IItemHandler, IFluidHandlerAdv {
 
-    public static final long MAX_POWER =  5000 * MjAPI.MJ;
+    public static final long MAX_POWER = 5000 * MjAPI.MJ;
     public static final long SAFETY_POWER = MAX_POWER / 5;
     public static final long SHUTDOWN_POWER = 0;
     public static final long NULL_ROBOT_ID = Long.MAX_VALUE;
@@ -27,7 +27,7 @@ public abstract class EntityRobotBase extends LivingEntity implements IItemHandl
     public EntityRobotBase(Level par1World) {
         // TODO Calen robot entity type?
 //        super(par1World);
-        super(null,par1World);
+        super(null, par1World);
     }
 
     public abstract void setItemInUse(ItemStack stack);

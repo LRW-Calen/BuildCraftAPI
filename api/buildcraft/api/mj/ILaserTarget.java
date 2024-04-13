@@ -4,14 +4,11 @@
  * should be located as "LICENSE.API" in the BuildCraft source code distribution. */
 package buildcraft.api.mj;
 
-import java.lang.annotation.Inherited;
-
 /** This interface should be defined by any Tile which wants to receive power from BuildCraft lasers.
  *
  * The respective Block MUST implement ILaserTargetBlock! */
 //@ILaserTargetAnnotation // Calen
-public interface ILaserTarget
-{
+public interface ILaserTarget {
 
     /** Returns The amount of power this target currently needs.
      *

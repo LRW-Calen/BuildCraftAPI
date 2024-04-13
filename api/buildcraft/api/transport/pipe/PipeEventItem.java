@@ -81,7 +81,8 @@ public abstract class PipeEventItem extends PipeEvent {
         public void setStack(ItemStack stack) {
             if (stack == null) {
                 throw new NullPointerException("stack");
-            } else {
+            }
+            else {
                 this.stack = stack;
             }
         }
@@ -149,7 +150,8 @@ public abstract class PipeEventItem extends PipeEvent {
         public void setExcess(ItemStack stack) {
             if (stack == null) {
                 throw new NullPointerException("stack");
-            } else {
+            }
+            else {
                 this.excess = stack;
             }
         }
@@ -159,7 +161,7 @@ public abstract class PipeEventItem extends PipeEvent {
             public final IFlowItems otherPipe;
 
             public IntoPipe(IPipeHolder holder, IFlowItems flow, ItemStack inserted, ItemStack excess, Direction to,
-                IFlowItems otherPipe) {
+                            IFlowItems otherPipe) {
                 super(holder, flow, inserted, excess, to);
                 this.otherPipe = otherPipe;
             }
@@ -170,7 +172,7 @@ public abstract class PipeEventItem extends PipeEvent {
             public final BlockEntity tile;
 
             public IntoTile(IPipeHolder holder, IFlowItems flow, ItemStack inserted, ItemStack excess, Direction to,
-                BlockEntity tile) {
+                            BlockEntity tile) {
                 super(holder, flow, inserted, excess, to);
                 this.tile = tile;
             }
@@ -256,7 +258,8 @@ public abstract class PipeEventItem extends PipeEvent {
                     return ImmutableList.of(allowed);
                 default:
             }
-            priority_search: {
+            priority_search:
+            {
                 int val = priority[0];
                 for (int i = 1; i < priority.length; i++) {
                     if (priority[i] != val) {
@@ -328,9 +331,11 @@ public abstract class PipeEventItem extends PipeEvent {
         public void setStack(ItemStack stack) {
             if (stack == null) {
                 throw new NullPointerException("stack");
-            } else if (stack.isEmpty()) {
+            }
+            else if (stack.isEmpty()) {
                 entity.setItem(ItemStack.EMPTY);
-            } else {
+            }
+            else {
                 entity.setItem(stack);
             }
         }
@@ -388,7 +393,7 @@ public abstract class PipeEventItem extends PipeEvent {
         public final ImmutableList<ItemEntry> items;
 
         public FindDest(IPipeHolder holder, IFlowItems flow, List<EnumSet<Direction>> orderedDestinations,
-            ImmutableList<ItemEntry> items) {
+                        ImmutableList<ItemEntry> items) {
             super(holder, flow, orderedDestinations);
             this.items = items;
         }

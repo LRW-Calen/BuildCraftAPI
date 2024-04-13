@@ -14,8 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-public interface ISchematicBlock
-{
+public interface ISchematicBlock {
     void init(SchematicBlockContext context);
 
     default boolean isAir() {
@@ -47,7 +46,7 @@ public interface ISchematicBlock
 
     boolean build(Level world, BlockPos blockPos);
 
-//    boolean buildWithoutChecks(Level world, BlockPos blockPos);
+    //    boolean buildWithoutChecks(Level world, BlockPos blockPos);
     boolean buildWithoutChecks(FakeWorld world, BlockPos blockPos);
 
     boolean isBuilt(Level world, BlockPos blockPos);

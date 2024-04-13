@@ -27,21 +27,18 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.IOException;
 
-public abstract class PipePluggable
-{
+public abstract class PipePluggable {
     public final PluggableDefinition definition;
     public final IPipeHolder holder;
     public final Direction side;
 
-    public PipePluggable(PluggableDefinition definition, IPipeHolder holder, Direction side)
-    {
+    public PipePluggable(PluggableDefinition definition, IPipeHolder holder, Direction side) {
         this.definition = definition;
         this.holder = holder;
         this.side = side;
     }
 
-    public CompoundTag writeToNbt()
-    {
+    public CompoundTag writeToNbt() {
         CompoundTag nbt = new CompoundTag();
         return nbt;
     }
@@ -51,28 +48,23 @@ public abstract class PipePluggable
      * {@link PluggableDefinition#loadFromBuffer(IPipeHolder, Direction, FriendlyByteBuf)} on the client. (This is called
      * on the server and sent to the client). Note that this will be called *instead* of write and read payload.
      */
-    public void writeCreationPayload(FriendlyByteBuf buffer)
-    {
+    public void writeCreationPayload(FriendlyByteBuf buffer) {
 
     }
 
-    public void writePayload(FriendlyByteBuf buffer, Dist side)
-    {
+    public void writePayload(FriendlyByteBuf buffer, Dist side) {
 
     }
 
-    public void readPayload(FriendlyByteBuf buffer, NetworkDirection side, NetworkEvent.Context ctx) throws IOException
-    {
+    public void readPayload(FriendlyByteBuf buffer, NetworkDirection side, NetworkEvent.Context ctx) throws IOException {
 
     }
 
-    public final void scheduleNetworkUpdate()
-    {
+    public final void scheduleNetworkUpdate() {
         holder.scheduleNetworkUpdate(IPipeHolder.PipeMessageReceiver.PLUGGABLES[side.ordinal()]);
     }
 
-    public void onTick()
-    {
+    public void onTick() {
     }
 
     /**
@@ -83,8 +75,7 @@ public abstract class PipePluggable
     /**
      * @return True if the pipe cannot connect outwards (it is blocked), or False if this does not core the pipe.
      */
-    public boolean isBlocking()
-    {
+    public boolean isBlocking() {
         return false;
     }
 
@@ -94,8 +85,7 @@ public abstract class PipePluggable
      * {@link ICapabilityProvider#hasCapability(Capability, Direction)} will return true when this returns a non-null
      * value.
      */
-    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap)
-    {
+    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap) {
         return LazyOptional.empty();
     }
 
@@ -105,26 +95,22 @@ public abstract class PipePluggable
      * @param cap
      * @return
      */
-    public <T> T getInternalCapability(@Nonnull Capability<T> cap)
-    {
+    public <T> T getInternalCapability(@Nonnull Capability<T> cap) {
         return null;
     }
 
     /**
      * Called whenever this pluggable is removed from the pipe.
      */
-    public void onRemove()
-    {
+    public void onRemove() {
     }
 
     /**
      * @param toDrop A list containing all the items to drop (so you should add your items to this list)
      */
-    public void addDrops(NonNullList<ItemStack> toDrop, int fortune)
-    {
+    public void addDrops(NonNullList<ItemStack> toDrop, int fortune) {
         ItemStack stack = getPickStack();
-        if (!stack.isEmpty())
-        {
+        if (!stack.isEmpty()) {
             toDrop.add(stack);
         }
     }
@@ -134,20 +120,17 @@ public abstract class PipePluggable
      *
      * @return The stack that should be picked, or ItemStack.EMPTY if no stack can be picked from this pluggable.
      */
-    public ItemStack getPickStack()
-    {
+    public ItemStack getPickStack() {
         return ItemStack.EMPTY;
     }
 
-    public boolean onPluggableActivate(Player player, HitResult trace, float hitX, float hitY, float hitZ)
-    {
+    public boolean onPluggableActivate(Player player, HitResult trace, float hitX, float hitY, float hitZ) {
         return false;
     }
 
     @OnlyIn(Dist.CLIENT)
     @Nullable
-    public PluggableModelKey getModelRenderKey(RenderType layer)
-    {
+    public PluggableModelKey getModelRenderKey(RenderType layer) {
         return null;
     }
 
@@ -158,8 +141,7 @@ public abstract class PipePluggable
      * @return The tint index to render the quad with, or -1 for default.
      */
     @OnlyIn(Dist.CLIENT)
-    public int getBlockColor(int tintIndex)
-    {
+    public int getBlockColor(int tintIndex) {
         return -1;
     }
 
@@ -167,8 +149,7 @@ public abstract class PipePluggable
      * PipePluggable version of
      * {@link Block#canBeConnectedTo(net.minecraft.world.level.LevelAccessor, BlockPos, Direction)}.
      */
-    public boolean canBeConnected()
-    {
+    public boolean canBeConnected() {
         return false;
     }
 
@@ -176,8 +157,7 @@ public abstract class PipePluggable
      * PipePluggable version of
      * {@link BlockState#isSideSolid(IBlockAccess, BlockPos, Direction)}
      */
-    public boolean isSideSolid()
-    {
+    public boolean isSideSolid() {
         return false;
     }
 
@@ -185,13 +165,11 @@ public abstract class PipePluggable
      * PipePluggable version of {@link Block#getExplosionResistance(Level, BlockPos, Entity, Explosion)}
      */
 //    public float getExplosionResistance(@Nullable Entity exploder, Explosion explosion)
-    public float getExplosionResistance(@Nonnull Entity exploder, Explosion explosion)
-    {
+    public float getExplosionResistance(@Nonnull Entity exploder, Explosion explosion) {
         return 0;
     }
 
-    public boolean canConnectToRedstone(@Nullable Direction to)
-    {
+    public boolean canConnectToRedstone(@Nullable Direction to) {
         return false;
     }
 
@@ -207,8 +185,7 @@ public abstract class PipePluggable
 //        return SupportType.FULL;
 //    }
 
-    public void onPlacedBy(Player player)
-    {
+    public void onPlacedBy(Player player) {
 
     }
 }

@@ -6,8 +6,7 @@ import net.minecraft.core.BlockPos;
 /**
  * Use methods of the interface as much as possible, implementation can do optimizations
  */
-public interface IFilledTemplate
-{
+public interface IFilledTemplate {
     BlockPos getSize();
 
     default BlockPos getMax() {

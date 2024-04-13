@@ -10,8 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import javax.annotation.Nonnull;
 import java.util.Collection;
 
-public interface ITriggerProvider
-{
+public interface ITriggerProvider {
     void addInternalTriggers(Collection<ITriggerInternal> triggers, IStatementContainer container);
 
     void addInternalSidedTriggers(Collection<ITriggerInternalSided> triggers, IStatementContainer container, @Nonnull Direction side);

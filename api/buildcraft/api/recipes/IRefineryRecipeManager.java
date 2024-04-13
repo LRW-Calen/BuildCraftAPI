@@ -13,14 +13,12 @@ import java.util.Collection;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-public interface IRefineryRecipeManager
-{
+public interface IRefineryRecipeManager {
     //    IHeatableRecipe createHeatingRecipe(FluidStack in, FluidStack out, int heatFrom, int heatTo);
     IHeatableRecipe createHeatingRecipe(ResourceLocation id, FluidStack in, FluidStack out, int heatFrom, int heatTo);
 
     //    default IHeatableRecipe addHeatableRecipe(FluidStack in, FluidStack out, int heatFrom, int heatTo)
-    default IHeatableRecipe addUnregisteredHeatableRecipe(ResourceLocation id, FluidStack in, FluidStack out, int heatFrom, int heatTo)
-    {
+    default IHeatableRecipe addUnregisteredHeatableRecipe(ResourceLocation id, FluidStack in, FluidStack out, int heatFrom, int heatTo) {
 //        return getHeatableRegistry().addRecipe(createHeatingRecipe(in, out, heatFrom, heatTo));
         return getHeatableRegistry().addUnregisteredRecipe(createHeatingRecipe(id, in, out, heatFrom, heatTo));
     }
@@ -29,8 +27,7 @@ public interface IRefineryRecipeManager
     ICoolableRecipe createCoolableRecipe(ResourceLocation id, FluidStack in, FluidStack out, int heatFrom, int heatTo);
 
     //    default ICoolableRecipe addCoolableRecipe(FluidStack in, FluidStack out, int heatFrom, int heatTo)
-    default ICoolableRecipe addUnregisteredCoolableRecipe(ResourceLocation id, FluidStack in, FluidStack out, int heatFrom, int heatTo)
-    {
+    default ICoolableRecipe addUnregisteredCoolableRecipe(ResourceLocation id, FluidStack in, FluidStack out, int heatFrom, int heatTo) {
 //        return getCoolableRegistry().addRecipe(createCoolableRecipe(in, out, heatFrom, heatTo));
         return getCoolableRegistry().addUnregisteredRecipe(createCoolableRecipe(id, in, out, heatFrom, heatTo));
     }
@@ -39,8 +36,7 @@ public interface IRefineryRecipeManager
     IDistillationRecipe createDistillationRecipe(ResourceLocation id, FluidStack in, FluidStack outGas, FluidStack outLiquid, long powerRequired);
 
     //    default IDistillationRecipe addDistillationRecipe(FluidStack in, FluidStack outGas, FluidStack outLiquid, long powerRequired)
-    default IDistillationRecipe addUnregisteredDistillationRecipe(ResourceLocation id, FluidStack in, FluidStack outGas, FluidStack outLiquid, long powerRequired)
-    {
+    default IDistillationRecipe addUnregisteredDistillationRecipe(ResourceLocation id, FluidStack in, FluidStack outGas, FluidStack outLiquid, long powerRequired) {
 //        return getDistillationRegistry().addRecipe(createDistillationRecipe(in, outGas, outLiquid, powerRequired));
         return getDistillationRegistry().addUnregisteredRecipe(createDistillationRecipe(id, in, outGas, outLiquid, powerRequired));
     }
@@ -51,8 +47,7 @@ public interface IRefineryRecipeManager
 
     IRefineryRegistry<IDistillationRecipe> getDistillationRegistry();
 
-    interface IRefineryRegistry<R extends IRefineryRecipe>
-    {
+    interface IRefineryRegistry<R extends IRefineryRecipe> {
         /**
          * @return an unmodifiable collection containing all of the distillation recipes that satisfy the given
          * predicate. All of the recipe objects are guaranteed to never be null.
@@ -88,13 +83,11 @@ public interface IRefineryRecipeManager
     }
 
     //    interface IRefineryRecipe
-    interface IRefineryRecipe extends Recipe<Container>
-    {
+    interface IRefineryRecipe extends Recipe<Container> {
         FluidStack in();
     }
 
-    interface IHeatExchangerRecipe extends IRefineryRecipe
-    {
+    interface IHeatExchangerRecipe extends IRefineryRecipe {
         @Nullable
         FluidStack out();
 
@@ -103,35 +96,30 @@ public interface IRefineryRecipeManager
         int heatTo();
     }
 
-    interface IHeatableRecipe extends IHeatExchangerRecipe
-    {
+    interface IHeatableRecipe extends IHeatExchangerRecipe {
         public static final ResourceLocation TYPE_ID = new ResourceLocation(BCModules.FACTORY.getModId(), "heat_exchange/heatable");
 
         public static final RecipeType<IHeatableRecipe> TYPE = RecipeType.register(TYPE_ID.toString());
 
 
         @Override
-        default RecipeType<IHeatableRecipe> getType()
-        {
+        default RecipeType<IHeatableRecipe> getType() {
             return TYPE;
         }
     }
 
-    interface ICoolableRecipe extends IHeatExchangerRecipe
-    {
+    interface ICoolableRecipe extends IHeatExchangerRecipe {
         public static final ResourceLocation TYPE_ID = new ResourceLocation(BCModules.FACTORY.getModId(), "heat_exchange/coolable");
 
         public static final RecipeType<ICoolableRecipe> TYPE = RecipeType.register(TYPE_ID.toString());
 
         @Override
-        default RecipeType<ICoolableRecipe> getType()
-        {
+        default RecipeType<ICoolableRecipe> getType() {
             return TYPE;
         }
     }
 
-    interface IDistillationRecipe extends IRefineryRecipe
-    {
+    interface IDistillationRecipe extends IRefineryRecipe {
         public static final ResourceLocation TYPE_ID = new ResourceLocation(BCModules.FACTORY.getModId(), "distillation");
 
         public static final RecipeType<IDistillationRecipe> TYPE = RecipeType.register(TYPE_ID.toString());
@@ -143,8 +131,7 @@ public interface IRefineryRecipeManager
         FluidStack outLiquid();
 
         @Override
-        default RecipeType<IDistillationRecipe> getType()
-        {
+        default RecipeType<IDistillationRecipe> getType() {
             return TYPE;
         }
     }

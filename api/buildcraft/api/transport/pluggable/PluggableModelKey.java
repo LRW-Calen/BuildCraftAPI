@@ -5,8 +5,7 @@ import net.minecraft.core.Direction;
 
 import java.util.Objects;
 
-public abstract class PluggableModelKey
-{
+public abstract class PluggableModelKey {
     public final RenderType layer;
     public final Direction side;
     private final int hash;

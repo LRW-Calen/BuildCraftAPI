@@ -17,8 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.fluids.FluidStack;
 
 //public interface IFuel
-public interface IFuel extends Recipe<Container>
-{
+public interface IFuel extends Recipe<Container> {
     public static final ResourceLocation TYPE_ID = new ResourceLocation(BCModules.ENERGY.getModId(), "fuel");
 
     public static final RecipeType<IFuel> TYPE = RecipeType.register(TYPE_ID.toString());
@@ -33,39 +32,33 @@ public interface IFuel extends Recipe<Container>
     long getPowerPerCycle();
 
     @Override
-    default boolean matches(Container inv, Level world)
-    {
+    default boolean matches(Container inv, Level world) {
         return false;
     }
 
     @Override
-    default ItemStack assemble(Container inv)
-    {
+    default ItemStack assemble(Container inv) {
         return StackUtil.EMPTY;
     }
 
     @Override
-    default boolean canCraftInDimensions(int width, int height)
-    {
+    default boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
     @Override
-    default ItemStack getResultItem()
-    {
+    default ItemStack getResultItem() {
         return StackUtil.EMPTY;
     }
 
     @Override
-    default boolean isSpecial()
-    {
+    default boolean isSpecial() {
         return true;
     }
 
     // Calen
     @Override
-    default RecipeType<IFuel> getType()
-    {
+    default RecipeType<IFuel> getType() {
         return TYPE;
     }
 

@@ -33,7 +33,8 @@ public abstract class RedstoneBoardNBT<T> {
     public int getParameterNumber(CompoundTag nbt) {
         if (!nbt.contains("parameters")) {
             return 0;
-        } else {
+        }
+        else {
             return nbt.getList("parameters", Tag.TAG_COMPOUND).size();
         }
     }

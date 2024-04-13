@@ -11,13 +11,13 @@ import net.minecraftforge.fluids.FluidStack;
 // Calen: ICoolant 1.12.2 -> IFluidCoolant 1.18.2
 // 1.18.2 new class ICoolant super ICoolant, IFluidCoolant
 //public interface ICoolant
-public interface IFluidCoolant extends ICoolant
-{
+public interface IFluidCoolant extends ICoolant {
     boolean matchesFluid(FluidStack fluid);
 
     /** @param fluid
      * @param heat
      * @return 0 if the input fluid provides no cooling, or a value greater than 0 if it does. */
     float getDegreesCoolingPerMB(FluidStack fluid, float heat);
+
     float getDegreesCoolingPerMB();
 }

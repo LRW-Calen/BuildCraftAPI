@@ -10,8 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import javax.annotation.Nonnull;
 import java.util.Collection;
 
-public interface IActionProvider
-{
+public interface IActionProvider {
     void addInternalActions(Collection<IActionInternal> actions, IStatementContainer container);
 
     void addInternalSidedActions(Collection<IActionInternalSided> actions, IStatementContainer container, @Nonnull Direction side);

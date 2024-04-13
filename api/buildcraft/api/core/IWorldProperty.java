@@ -7,8 +7,7 @@ package buildcraft.api.core;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 
-public interface IWorldProperty
-{
+public interface IWorldProperty {
     boolean get(Level world, BlockPos pos);
 
     void clear();

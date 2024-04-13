@@ -21,8 +21,7 @@ import java.util.Set;
  */
 @Deprecated
 //public abstract class AssemblyRecipe implements Comparable<AssemblyRecipe>, IForgeRegistryEntry<AssemblyRecipe>
-public abstract class AssemblyRecipe implements Comparable<AssemblyRecipe>, IForgeRegistryEntry<AssemblyRecipe>, Recipe<Container>
-{
+public abstract class AssemblyRecipe implements Comparable<AssemblyRecipe>, IForgeRegistryEntry<AssemblyRecipe>, Recipe<Container> {
     public static final ResourceLocation TYPE_ID = new ResourceLocation(BCSilicon.MOD_ID, "assembly");
 
     public static final RecipeType<AssemblyRecipe> TYPE = RecipeType.register(TYPE_ID.toString());
@@ -57,14 +56,11 @@ public abstract class AssemblyRecipe implements Comparable<AssemblyRecipe>, IFor
     public abstract long getRequiredMicroJoulesFor(@Nonnull ItemStack output);
 
     @Override
-    public boolean equals(Object o)
-    {
-        if (this == o)
-        {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass())
-        {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
 
@@ -74,76 +70,68 @@ public abstract class AssemblyRecipe implements Comparable<AssemblyRecipe>, IFor
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return name.hashCode();
     }
 
     @Override
-    public int compareTo(AssemblyRecipe o)
-    {
+    public int compareTo(AssemblyRecipe o) {
         return name.toString().compareTo(o.name.toString());
     }
 
     @Override
-    public AssemblyRecipe setRegistryName(ResourceLocation name)
-    {
+    public AssemblyRecipe setRegistryName(ResourceLocation name) {
         this.name = name;
         return this;
     }
 
     @Nullable
     @Override
-    public ResourceLocation getRegistryName()
-    {
+    public ResourceLocation getRegistryName() {
         return name;
     }
 
     @Override
-    public Class<AssemblyRecipe> getRegistryType()
-    {
+    public Class<AssemblyRecipe> getRegistryType() {
         return AssemblyRecipe.class;
     }
+
     // Calen: for serialize
     public abstract long getRequiredMicroJoulesForSerialize();
+
     public abstract Set<IngredientStack> getRequiredIngredientStacksForSerialize();
+
     public abstract Set<ItemStack> getOutputForSerialize();
 
     // Calen: forced by Recipe
 
     @Override
-    public ResourceLocation getId()
-    {
+    public ResourceLocation getId() {
         return name;
     }
 
     @Override
-    public boolean matches(Container inv, Level world)
-    {
+    public boolean matches(Container inv, Level world) {
         return false;
     }
 
     @Override
-    public boolean canCraftInDimensions(int width, int height)
-    {
+    public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
     @Override
-    public boolean isSpecial()
-    {
+    public boolean isSpecial() {
         return true;
     }
 
     @Override
-    public RecipeSerializer<AssemblyRecipe> getSerializer()
-    {
+    public RecipeSerializer<AssemblyRecipe> getSerializer() {
         return AssemblyRecipeSerializer.INSTANCE;
     }
 
     @Override
-    public RecipeType<AssemblyRecipe> getType()
-    {
+    public RecipeType<AssemblyRecipe> getType() {
         return TYPE;
     }
 }

@@ -12,8 +12,7 @@ import java.util.TreeSet;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class SchematicEntityFactoryRegistry
-{
+public class SchematicEntityFactoryRegistry {
     private static final Set<SchematicEntityFactory<?>> FACTORIES = new TreeSet<>();
 
     public static <S extends ISchematicEntity> void registerFactory(String name,
@@ -21,10 +20,10 @@ public class SchematicEntityFactoryRegistry
                                                                     Predicate<SchematicEntityContext> predicate,
                                                                     Supplier<S> supplier) {
         FACTORIES.add(new SchematicEntityFactory<>(
-            BuildCraftAPI.nameToResourceLocation(name),
-            priority,
-            predicate,
-            supplier
+                BuildCraftAPI.nameToResourceLocation(name),
+                priority,
+                predicate,
+                supplier
         ));
     }
 
@@ -50,16 +49,16 @@ public class SchematicEntityFactoryRegistry
     public static <S extends ISchematicEntity> SchematicEntityFactory<S> getFactoryByInstance(S instance) {
         // noinspection unchecked
         return (SchematicEntityFactory<S>) FACTORIES.stream()
-            .filter(schematicEntityFactory -> schematicEntityFactory.clazz == instance.getClass())
-            .findFirst()
-            .orElseThrow(() -> new IllegalStateException("Didn't find a factory for " + instance.getClass()));
+                .filter(schematicEntityFactory -> schematicEntityFactory.clazz == instance.getClass())
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Didn't find a factory for " + instance.getClass()));
     }
 
     @Nullable
     public static SchematicEntityFactory<?> getFactoryByName(ResourceLocation name) {
         return FACTORIES.stream()
-            .filter(schematicEntityFactory -> schematicEntityFactory.name.equals(name))
-            .findFirst()
-            .orElse(null);
+                .filter(schematicEntityFactory -> schematicEntityFactory.name.equals(name))
+                .findFirst()
+                .orElse(null);
     }
 }

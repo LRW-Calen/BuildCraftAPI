@@ -8,8 +8,7 @@ import javax.annotation.Nullable;
 /**
  * A version of {@link IFluidHandler} that can drain a fluid that a fluid filter accepts.
  */
-public interface IFluidHandlerAdv extends IFluidHandler
-{
+public interface IFluidHandlerAdv extends IFluidHandler {
     /**
      * Drains fluid out of internal tanks, distribution is left entirely to the IFluidHandler.
      *
