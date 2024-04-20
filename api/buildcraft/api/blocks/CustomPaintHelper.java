@@ -53,7 +53,7 @@ public enum CustomPaintHelper {
             Class<? extends Block> foundClass = block.getClass();
             if (blockClass.isAssignableFrom(foundClass)) {
                 if (DEBUG) {
-                    BCLog.logger.info("[api.painting] Found an assignable core " + block.getRegistryName() + " (" + foundClass + ") for " + blockClass);
+                    BCLog.logger.info("[api.painting] Found an assignable block " + block.getRegistryName() + " (" + foundClass + ") for " + blockClass);
                 }
                 registerHandlerInternal(block, handler);
             }
@@ -63,11 +63,11 @@ public enum CustomPaintHelper {
     public void registerHandler(Block block, ICustomPaintHandler handler) {
         if (registerHandlerInternal(block, handler)) {
             if (DEBUG) {
-                BCLog.logger.info("[api.painting] Setting a paint handler for core " + block.getRegistryName() + "(" + handler.getClass() + ")");
+                BCLog.logger.info("[api.painting] Setting a paint handler for block " + block.getRegistryName() + "(" + handler.getClass() + ")");
             }
         }
         else if (DEBUG) {
-            BCLog.logger.info("[api.painting] Adding another paint handler for core " + block.getRegistryName() + "(" + handler.getClass() + ")");
+            BCLog.logger.info("[api.painting] Adding another paint handler for block " + block.getRegistryName() + "(" + handler.getClass() + ")");
         }
     }
 

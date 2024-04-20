@@ -5,8 +5,7 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 
 import java.util.concurrent.Callable;
 
-/**
- * Forge has a wonderful system for capabilities, which provides a better way of managing mod compat even if the target
+/** Forge has a wonderful system for capabilities, which provides a better way of managing mod compat even if the target
  * mod isn't loaded. Said system uses ASM data to inject capabilities into every mod, which makes it a matter of
  * checking a (generic) field at runtime.
  * <p>
@@ -18,8 +17,7 @@ import java.util.concurrent.Callable;
  * <p>
  * This is NOT designed for mods wishing to add compatibility for buildcraft capability instances: those should still go
  * via the forge-recommended {@link CapabilityInject} route, or refer to the various fields in buildcraft api classes
- * containing the capability instances.
- */
+ * containing the capability instances. */
 public class CapabilitiesHelper {
 
     // ################
@@ -28,14 +26,12 @@ public class CapabilitiesHelper {
     //
     // ################
 
-    /**
-     * Registers a given type with {@link #registerCapability(CheckedStorage, Callable)}, but with a
+    /** Registers a given type with {@link #registerCapability(CheckedStorage, Callable)}, but with a
      * {@link ThrowingStorage} and a factory that throws an {@link UnsupportedOperationException} instead of creating a
      * new capability instance.
      *
      * @param clazz The type that all instances must derive from.
-     * @return The registered {@link Capability}
-     */
+     * @return The registered {@link Capability} */
 //    @Nonnull
 //    public static <T> Capability<T> registerCapability(Class<T> clazz)
 //    {
@@ -46,27 +42,23 @@ public class CapabilitiesHelper {
 //        return CapabilityManager.get(new CapabilityToken<>(){});
 //    }
 
-    /**
-     * Registers a given type with the {@link CapabilityManager}, but also returns the capability instance.
+    /** Registers a given type with the {@link CapabilityManager}, but also returns the capability instance.
      *
      * @param storage The storage for the capability. This must extend {@link CheckedStorage} in order to allow the
      *                internal mechanisms to ensure that nothing went wrong during our meddling into forge.
      * @param factory The factory for the capability.
-     * @return The registered {@link Capability}
-     */
+     * @return The registered {@link Capability} */
 //    @Nonnull
 //    public static <T> Capability<T> registerCapability(CheckedStorage<T> storage, Callable<T> factory)
 //    {
 //        return registerCapInternal(storage, factory);
 //    }
 
-    /**
-     * A type of {@link IStorage} that contains the class that it would store. Used by the internal mechanisms of
+    /** A type of {@link IStorage} that contains the class that it would store. Used by the internal mechanisms of
      * {@link CapabilitiesHelper} to ensure that everything registers properly. A default always-throwing implementation
      * is {@link ThrowingStorage}.
      *
-     * @param <T> The type of this storage
-     */
+     * @param <T> The type of this storage */
 ////    public static abstract class CheckedStorage<T> implements IStorage<T>
 //    public static abstract class CheckedStorage<T> implements ICapabilityProvider, INBTSerializable
 //    {
@@ -79,10 +71,8 @@ public class CapabilitiesHelper {
 //        }
 //    }
 
-    /**
-     * A type of {@link CheckedStorage} that throws an {@link UnsupportedOperationException} from both the read and
-     * write methods. It is designed for {@link Capability Capability's} that must be written and read separately.
-     */
+    /** A type of {@link CheckedStorage} that throws an {@link UnsupportedOperationException} from both the read and
+     * write methods. It is designed for {@link Capability Capability's} that must be written and read separately. */
 //    public static final class ThrowingStorage<T> extends CheckedStorage<T>
 //    {
 //        private T capInnerInstance;

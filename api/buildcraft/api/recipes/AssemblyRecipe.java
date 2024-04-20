@@ -22,7 +22,7 @@ import java.util.Set;
 @Deprecated
 //public abstract class AssemblyRecipe implements Comparable<AssemblyRecipe>, IForgeRegistryEntry<AssemblyRecipe>
 public abstract class AssemblyRecipe implements Comparable<AssemblyRecipe>, IForgeRegistryEntry<AssemblyRecipe>, Recipe<Container> {
-    public static final ResourceLocation TYPE_ID = new ResourceLocation(BCSilicon.MOD_ID, "assembly");
+    public static final ResourceLocation TYPE_ID = new ResourceLocation(BCSilicon.MODID, "assembly");
 
     public static final RecipeType<AssemblyRecipe> TYPE = RecipeType.register(TYPE_ID.toString());
 
