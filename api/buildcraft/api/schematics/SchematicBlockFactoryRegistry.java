@@ -22,10 +22,10 @@ public class SchematicBlockFactoryRegistry {
         return FACTORIES;
     }
 
-    public static <S extends ISchematicBlock> void registerFactory(String name,
-                                                                   int priority,
-                                                                   Predicate<SchematicBlockContext> predicate,
-                                                                   Supplier<S> supplier) {
+    public static synchronized <S extends ISchematicBlock> void registerFactory(String name,
+                                                                                int priority,
+                                                                                Predicate<SchematicBlockContext> predicate,
+                                                                                Supplier<S> supplier) {
 //        FACTORIES.add(new SchematicBlockFactory<>(
         getFactoriesSynchronized().add(new SchematicBlockFactory<>(
                 BuildCraftAPI.nameToResourceLocation(name),
