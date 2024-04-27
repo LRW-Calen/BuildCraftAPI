@@ -5,15 +5,12 @@ import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-// Calen: from 1.12.2 forge
+/** Used in {@link buildcraft.api.facades.FacadeAPI} */
 public class BcImcMessage {
-    @Nonnull
-    public final String key;
     @Nonnull
     private final Object value;
 
-    public BcImcMessage(@Nonnull String key, @Nonnull Object value) {
-        this.key = key;
+    public BcImcMessage(@Nonnull Object value) {
         this.value = value;
     }
 

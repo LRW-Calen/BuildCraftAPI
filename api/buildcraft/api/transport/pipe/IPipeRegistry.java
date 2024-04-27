@@ -11,29 +11,22 @@ public interface IPipeRegistry {
 
     void registerPipe(PipeDefinition definition);
 
-    /**
-     * Maps the given {@link PipeDefinition} to an {@link IItemPipe}. This acts exactly akin to
-     * {@link Map#put(Object, Object)}.
-     */
+    /** Maps the given {@link PipeDefinition} to an {@link IItemPipe}. This acts exactly akin to
+     * {@link Map#put(Object, Object)}. */
 //    void setItemForPipe(PipeDefinition definition, @Nullable IItemPipe item);
-//    void setItemForPipe(PipeDefinition definition, @Nullable RegistryObject<? extends IItemPipe> item);
     void setItemForPipe(PipeDefinition definition, Map<DyeColor, RegistryObject<? extends IItemPipe>> item);
 
-    // Calen: reg different item object for different colour
-    //    IItemPipe getItemForPipe(PipeDefinition definition);
+    /** Creates a pipe item with a single colour  */
+    // IItemPipe getItemForPipe(PipeDefinition definition);
     IItemPipe getItemForPipe(PipeDefinition definition, DyeColor colour);
 
-    /**
-     * Creates an {@link IItemPipe} for the given {@link PipeDefinition}. If the {@link PipeDefinition} has been
+    /** Creates an {@link IItemPipe} for the given {@link PipeDefinition}. If the {@link PipeDefinition} has been
      * registered with {@link #registerPipe(PipeDefinition)} then it will also be registered with
-     * {@link #setItemForPipe(PipeDefinition, IItemPipe)}. The returned item will be automatically registered with
-     * forge.
-     */
+     * {@link #setItemForPipe(PipeDefinition, Map)}. The returned item will be automatically registered with
+     * forge. */
 //    IItemPipe createItemForPipe(PipeDefinition definition);
-//    RegistryObject<? extends IItemPipe> createItemForPipe(PipeDefinition definition);
     Map<DyeColor, RegistryObject<? extends IItemPipe>> createItemForPipe(PipeDefinition definition);
 
-    // Calen: never used in 1.12.2
 //    /** Identical to {@link #createItemForPipe(PipeDefinition)}, but doesn't require registering tags with buildcraftcore
 //     * lib in order to register.
 //     *

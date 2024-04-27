@@ -32,4 +32,6 @@ public interface IFacadeItem {
 
     @Nullable
     IFacade getFacade(@Nonnull ItemStack facade);
+
+    ItemStack createItemStack(IFacade state);
 }

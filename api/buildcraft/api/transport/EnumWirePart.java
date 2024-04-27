@@ -20,14 +20,10 @@ public enum EnumWirePart {
 
     public final AxisDirection x, y, z;
 
-    /**
-     * The bounding box for rendering a wire or selecting an already-placed wire.
-     */
+    /** The bounding box for rendering a wire or selecting an already-placed wire. */
     public final VoxelShape boundingBox;
 
-    /**
-     * The bounding box that is used when adding pipe wire to a pipe
-     */
+    /** The bounding box that is used when adding pipe wire to a pipe */
     public final VoxelShape boundingBoxPossible;
 
     EnumWirePart(boolean x, boolean y, boolean z) {
@@ -78,16 +74,13 @@ public enum EnumWirePart {
         if (x) {
             if (y) {
                 return z ? EAST_UP_SOUTH : EAST_UP_NORTH;
-            }
-            else {
+            } else {
                 return z ? EAST_DOWN_SOUTH : EAST_DOWN_NORTH;
             }
-        }
-        else {
+        } else {
             if (y) {
                 return z ? WEST_UP_SOUTH : WEST_UP_NORTH;
-            }
-            else {
+            } else {
                 return z ? WEST_DOWN_SOUTH : WEST_DOWN_NORTH;
             }
         }

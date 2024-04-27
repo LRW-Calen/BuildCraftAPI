@@ -25,7 +25,7 @@ public interface ICropHandler {
      * @return true if the item can be planted at pos. */
     boolean canSustainPlant(Level world, ItemStack seed, BlockPos pos);
 
-    /** Plant the item in the core. You can assume plantCrop() will only be called if canSustainPlant() returned true.
+    /** Plant the item in the block. You can assume plantCrop() will only be called if canSustainPlant() returned true.
      *
      * @param world
      * @param player
@@ -39,7 +39,7 @@ public interface ICropHandler {
      * @param blockAccess
      * @param state
      * @param pos
-     * @return true if the core at pos is mature and can be harvested. */
+     * @return true if the block at pos is mature and can be harvested. */
     boolean isMature(LevelAccessor blockAccess, BlockState state, BlockPos pos);
 
     /** Harvest the crop. You can assume harvestCrop() will only be called if isMature() returned true.
@@ -47,7 +47,7 @@ public interface ICropHandler {
      * @param world
      * @param pos
      * @param drops a list to return the harvest's drops.
-     * @return true if the core was successfully harvested. */
+     * @return true if the block was successfully harvested. */
     boolean harvestCrop(Level world, BlockPos pos, NonNullList<ItemStack> drops);
 
 }

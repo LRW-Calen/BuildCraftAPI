@@ -21,6 +21,5 @@ public interface IItemPluggable {
      * @param side The side that the pluggable should be placed on
      * @return A pluggable to place onto the pipe */
     @Nullable
-    PipePluggable onPlace(@Nonnull ItemStack stack, IPipeHolder holder, Direction side, Player player,
-                          InteractionHand hand);
+    PipePluggable onPlace(@Nonnull ItemStack stack, IPipeHolder holder, Direction side, Player player, InteractionHand hand);
 }

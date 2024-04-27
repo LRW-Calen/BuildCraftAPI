@@ -15,6 +15,6 @@ public interface ITriggerProvider {
 
     void addInternalSidedTriggers(Collection<ITriggerInternalSided> triggers, IStatementContainer container, @Nonnull Direction side);
 
-    /** Returns the list of triggers available to a gate next to the given core. */
+    /** Returns the list of triggers available to a gate next to the given block. */
     void addExternalTriggers(Collection<ITriggerExternal> triggers, @Nonnull Direction side, BlockEntity tile);
 }

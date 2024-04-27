@@ -1,9 +1,7 @@
-/**
- * Copyright (c) 2011-2015, SpaceToad and the BuildCraft Team http://www.mod-buildcraft.com
- * <p>
- * The BuildCraft API is distributed under the terms of the MIT License. Please check the contents of the license, which
- * should be located as "LICENSE.API" in the BuildCraft source code distribution.
- */
+/** Copyright (c) 2011-2015, SpaceToad and the BuildCraft Team http://www.mod-buildcraft.com
+ *
+ * BuildCraft is distributed under the terms of the Minecraft Mod Public License 1.0, or MMPL. Please check the contents
+ * of the license located in http://www.mod-buildcraft.com/MMPL-1.0.txt */
 package buildcraft.api.statements;
 
 import buildcraft.api.core.render.ISprite;
@@ -27,9 +25,7 @@ public class StatementParameterItemStack implements IStatementParameter {
     @Nonnull
     private static final ItemStack EMPTY_STACK;
 
-    /**
-     * Immutable parameter that has the {@link ItemStack#EMPTY} as it's {@link #stack}.
-     */
+    /** Immutable parameter that has the {@link ItemStack#EMPTY} as it's {@link #stack}. */
     public static final StatementParameterItemStack EMPTY;
 
     static {
@@ -54,8 +50,7 @@ public class StatementParameterItemStack implements IStatementParameter {
         ItemStack read = ItemStack.of(nbt.getCompound("stack"));
         if (read.isEmpty()) {
             stack = EMPTY_STACK;
-        }
-        else {
+        } else {
             stack = read;
         }
     }
@@ -86,8 +81,7 @@ public class StatementParameterItemStack implements IStatementParameter {
     ) {
         if (stack.isEmpty()) {
             return EMPTY;
-        }
-        else {
+        } else {
             ItemStack newStack = stack.copy();
             newStack.setCount(1);
             return new StatementParameterItemStack(newStack);
@@ -99,9 +93,8 @@ public class StatementParameterItemStack implements IStatementParameter {
         if (object instanceof StatementParameterItemStack) {
             StatementParameterItemStack param = (StatementParameterItemStack) object;
 
-            return ItemStack.isSameItemSameTags(stack, param.stack);
-        }
-        else {
+            return ItemStack.matches(stack, param.stack);
+        } else {
             return false;
         }
     }

@@ -1,7 +1,7 @@
 package buildcraft.api.schematics;
 
+import buildcraft.api.core.IFakeWorld;
 import buildcraft.api.core.InvalidInputDataException;
-import buildcraft.builders.snapshot.FakeWorld;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
@@ -46,8 +46,8 @@ public interface ISchematicBlock {
 
     boolean build(Level world, BlockPos blockPos);
 
-    //    boolean buildWithoutChecks(Level world, BlockPos blockPos);
-    boolean buildWithoutChecks(FakeWorld world, BlockPos blockPos);
+    // boolean buildWithoutChecks(Level world, BlockPos blockPos);
+    boolean buildWithoutChecks(IFakeWorld world, BlockPos blockPos);
 
     boolean isBuilt(Level world, BlockPos blockPos);
 

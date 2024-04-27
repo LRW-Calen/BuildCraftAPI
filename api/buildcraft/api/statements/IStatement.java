@@ -29,8 +29,7 @@ public interface IStatement extends IGuiSlot {
         IStatementParameter _new = createParameter(index);
         if (old == null || _new == null) {
             return _new;
-        }
-        else if (old.getClass() == _new.getClass()) {
+        } else if (old.getClass() == _new.getClass()) {
             return old;
         }
         return _new;

@@ -1,6 +1,5 @@
 package buildcraft.api.recipes;
 
-
 import buildcraft.api.core.IStackFilter;
 
 /**

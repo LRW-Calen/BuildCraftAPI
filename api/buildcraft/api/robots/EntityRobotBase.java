@@ -11,6 +11,7 @@ import buildcraft.api.mj.MjAPI;
 import buildcraft.api.mj.MjBattery;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -24,10 +25,8 @@ public abstract class EntityRobotBase extends LivingEntity implements IItemHandl
     public static final long SHUTDOWN_POWER = 0;
     public static final long NULL_ROBOT_ID = Long.MAX_VALUE;
 
-    public EntityRobotBase(Level par1World) {
-        // TODO Calen robot entity type?
-//        super(par1World);
-        super(null, par1World);
+    public EntityRobotBase(EntityType<? extends LivingEntity> entityType, Level par1World) {
+        super(entityType, par1World);
     }
 
     public abstract void setItemInUse(ItemStack stack);

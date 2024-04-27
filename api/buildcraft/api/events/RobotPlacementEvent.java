@@ -17,5 +17,4 @@ public class RobotPlacementEvent extends Event {
         this.player = player;
         this.robotProgram = robotProgram;
     }
-
 }

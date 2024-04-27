@@ -12,7 +12,7 @@ public interface IStripesHandlerBlock {
      * @param direction
      * @param player
      * @param activator
-     * @return True if this broke a core, false otherwise (note that this handler MUST NOT return false if it has
+     * @return True if this broke a block, false otherwise (note that this handler MUST NOT return false if it has
      *         changed the world in any way) */
     boolean handle(Level world, BlockPos pos, Direction direction, Player player, IStripesActivator activator);
 }

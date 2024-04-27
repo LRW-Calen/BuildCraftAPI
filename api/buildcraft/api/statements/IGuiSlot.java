@@ -11,17 +11,13 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public interface IGuiSlot extends IConvertable {
-    /**
-     * Every statement needs a unique tag, it should be in the format of "&lt;modid&gt;:&lt;name&gt;".
+    /** Every statement needs a unique tag, it should be in the format of "&lt;modid&gt;:&lt;name&gt;".
      *
-     * @return the unique id
-     */
+     * @return the unique id */
     String getUniqueTag();
 
-    /**
-     * Return the description in the UI. Note that this should NEVER be called directly, instead this acts as a bridge
-     * for {@link #getTooltip()}. (As such this might return null or throw an exception)
-     */
+    /** Return the description in the UI. Note that this should NEVER be called directly, instead this acts as a bridge
+     * for {@link #getTooltip()}. (As such this might return null or throw an exception) */
     @OnlyIn(Dist.CLIENT)
 //    String getDescription();
     Component getDescription();
@@ -30,9 +26,7 @@ public interface IGuiSlot extends IConvertable {
     @OnlyIn(Dist.CLIENT)
     String getDescriptionKey();
 
-    /**
-     * @return The full tooltip for the UI.
-     */
+    /** @return The full tooltip for the UI. */
     @OnlyIn(Dist.CLIENT)
     default List<Component> getTooltip() {
 //        String desc = getDescription();
@@ -55,9 +49,7 @@ public interface IGuiSlot extends IConvertable {
         return ImmutableList.of(desc);
     }
 
-    /**
-     * @return A sprite to show in a GUI, or null if this should not render a sprite.
-     */
+    /** @return A sprite to show in a GUI, or null if this should not render a sprite. */
     @OnlyIn(Dist.CLIENT)
     @Nullable
     ISprite getSprite();

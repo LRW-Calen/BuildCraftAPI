@@ -51,8 +51,7 @@ public class MjBattery implements INBTSerializable<CompoundTag> {
     public long addPowerChecking(long microJoulesToAdd, boolean simulate) {
         if (isFull()) {
             return microJoulesToAdd;
-        }
-        else {
+        } else {
             return addPower(microJoulesToAdd, simulate);
         }
     }

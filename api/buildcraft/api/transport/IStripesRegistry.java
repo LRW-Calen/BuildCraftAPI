@@ -31,7 +31,7 @@ public interface IStripesRegistry {
                        Player player,
                        IStripesActivator activator);
 
-    /** @return True if a handler broke a core, false otherwise (and so nothing has been done) */
+    /** @return True if a handler broke a block, false otherwise (and so nothing has been done) */
     boolean handleBlock(Level world,
                         BlockPos pos,
                         Direction direction,

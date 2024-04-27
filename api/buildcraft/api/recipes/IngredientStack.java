@@ -27,7 +27,7 @@ public final class IngredientStack {
         this(ingredient, 1);
     }
 
-    //    public static IngredientStack of(Object o)
+    // public static IngredientStack of(Object o)
     public static IngredientStack of(JsonElement o) {
         return new IngredientStack(CraftingHelper.getIngredient(o));
     }
@@ -44,7 +44,6 @@ public final class IngredientStack {
         return new IngredientStack(Ingredient.of(tag));
     }
 
-    // Calen
     public void toNetwork(FriendlyByteBuf buffer) {
         buffer.writeInt(this.count);
         this.ingredient.toNetwork(buffer);

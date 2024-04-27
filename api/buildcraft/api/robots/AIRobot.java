@@ -103,8 +103,7 @@ public class AIRobot {
                 parentAI.delegateAI = null;
                 parentAI.delegateAIAborted(this);
             }
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
             delegateAI = null;
 
@@ -120,13 +119,11 @@ public class AIRobot {
 
             if (delegateAI != null) {
                 delegateAI.cycle();
-            }
-            else {
+            } else {
                 robot.getBattery().extractPower(1, getPowerCost());
                 update();
             }
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
             abort();
         }
@@ -148,8 +145,7 @@ public class AIRobot {
     public final AIRobot getActiveAI() {
         if (delegateAI != null) {
             return delegateAI.getActiveAI();
-        }
-        else {
+        } else {
             return this;
         }
     }
@@ -184,8 +180,7 @@ public class AIRobot {
                 if (sub.contains("class")) {
                     // Migration support for 6.4.x
                     aiRobotClass = RobotManager.getAIRobotByLegacyClassName(sub.getString("class"));
-                }
-                else {
+                } else {
                     aiRobotClass = RobotManager.getAIRobotByName(sub.getString("aiName"));
                 }
                 if (aiRobotClass != null) {
@@ -196,8 +191,7 @@ public class AIRobot {
                         delegateAI.loadFromNBT(sub);
                     }
                 }
-            }
-            catch (Throwable e) {
+            } catch (Throwable e) {
                 e.printStackTrace();
             }
         }
@@ -211,16 +205,14 @@ public class AIRobot {
             if (nbt.contains("class")) {
                 // Migration support for 6.4.x
                 aiRobotClass = RobotManager.getAIRobotByLegacyClassName(nbt.getString("class"));
-            }
-            else {
+            } else {
                 aiRobotClass = RobotManager.getAIRobotByName(nbt.getString("aiName"));
             }
             if (aiRobotClass != null) {
                 ai = (AIRobot) aiRobotClass.getConstructor(EntityRobotBase.class).newInstance(robot);
                 ai.loadFromNBT(nbt);
             }
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
 

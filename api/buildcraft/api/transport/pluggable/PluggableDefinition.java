@@ -46,27 +46,23 @@ public final class PluggableDefinition {
         /** Reads the pipe pluggable from NBT. Unlike {@link IPluggableNetLoader} (which is allowed to fail and throw an
          * exception if the wrong data is given) this should make a best effort to read the pluggable from nbt, or fall
          * back to sensible defaults. */
-        PipePluggable readFromNbt(PluggableDefinition definition, IPipeHolder holder, Direction side,
-                                  CompoundTag nbt);
+        PipePluggable readFromNbt(PluggableDefinition definition, IPipeHolder holder, Direction side, CompoundTag nbt);
     }
 
     @FunctionalInterface
     public interface IPluggableNetLoader {
-        PipePluggable loadFromBuffer(PluggableDefinition definition, IPipeHolder holder, Direction side,
-                                     FriendlyByteBuf buffer) throws InvalidInputDataException;
+        PipePluggable loadFromBuffer(PluggableDefinition definition, IPipeHolder holder, Direction side, FriendlyByteBuf buffer) throws InvalidInputDataException;
     }
 
     @FunctionalInterface
     public interface IPluggableCreator extends IPluggableNbtReader, IPluggableNetLoader {
         @Override
-        default PipePluggable loadFromBuffer(PluggableDefinition definition, IPipeHolder holder, Direction side,
-                                             FriendlyByteBuf buffer) {
+        default PipePluggable loadFromBuffer(PluggableDefinition definition, IPipeHolder holder, Direction side, FriendlyByteBuf buffer) {
             return createSimplePluggable(definition, holder, side);
         }
 
         @Override
-        default PipePluggable readFromNbt(PluggableDefinition definition, IPipeHolder holder, Direction side,
-                                          CompoundTag nbt) {
+        default PipePluggable readFromNbt(PluggableDefinition definition, IPipeHolder holder, Direction side, CompoundTag nbt) {
             return createSimplePluggable(definition, holder, side);
         }
 

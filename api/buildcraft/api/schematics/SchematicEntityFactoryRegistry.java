@@ -29,17 +29,18 @@ public class SchematicEntityFactoryRegistry {
 
     // Calen no usage in 1.12.2
     // EntityList.class not present in 1.18.2
-//    public static <S extends ISchematicEntity> void registerFactory(String name,
-//                                                                    int priority,
-//                                                                    List<ResourceLocation> entities,
-//                                                                    Supplier<S> supplier) {
-//        registerFactory(
-//            name,
-//            priority,
+    public static <S extends ISchematicEntity> void registerFactory(String name,
+                                                                    int priority,
+                                                                    List<ResourceLocation> entities,
+                                                                    Supplier<S> supplier) {
+        registerFactory(
+                name,
+                priority,
 //            context -> entities.contains(EntityList.getKey(context.entity)),
-//            supplier
-//        );
-//    }
+                context -> entities.contains(context.entity.getType().getRegistryName()),
+                supplier
+        );
+    }
 
     public static List<SchematicEntityFactory<?>> getFactories() {
         return ImmutableList.copyOf(FACTORIES);

@@ -8,9 +8,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-/**
- * Provides a quick way to return all types of a single {@link IMjConnector} for all the different capabilities.
- */
+/** Provides a quick way to return all types of a single {@link IMjConnector} for all the different capabilities. */
 public class MjCapabilityHelper implements ICapabilityProvider {
 
     @Nonnull
@@ -36,12 +34,9 @@ public class MjCapabilityHelper implements ICapabilityProvider {
         this.provider = mj instanceof IMjPassiveProvider ? (IMjPassiveProvider) mj : null;
     }
 
-    // Calen: getCapability(...).isPresent()
-    //    @Override
-//    public boolean hasCapability(@Nonnull Capability<?> capability, Direction facing)
-//    {
-////        return getCapability(capability, facing) != null;
-//        return getCapability(capability, facing).isPresent();
+//    @Override
+//    public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
+//        return getCapability(capability, facing) != null;
 //    }
 
     @Override

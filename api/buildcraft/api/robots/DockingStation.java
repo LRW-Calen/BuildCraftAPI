@@ -51,8 +51,7 @@ public abstract class DockingStation {
     public EntityRobotBase robotTaking() {
         if (robotTakingId == EntityRobotBase.NULL_ROBOT_ID) {
             return null;
-        }
-        else if (robotTaking == null) {
+        } else if (robotTaking == null) {
             robotTaking = RobotManager.registryProvider.getRegistry(world).getLoadedRobot(robotTakingId);
         }
 
@@ -78,8 +77,7 @@ public abstract class DockingStation {
             registry.take(this, robot.getRobotId());
 
             return true;
-        }
-        else {
+        } else {
             return robotTakingId == robot.getRobotId();
         }
     }
@@ -94,8 +92,7 @@ public abstract class DockingStation {
             registry.take(this, robot.getRobotId());
 
             return true;
-        }
-        else {
+        } else {
             return robot.getRobotId() == robotTakingId;
         }
     }
@@ -119,7 +116,7 @@ public abstract class DockingStation {
     }
 
     public void writeToNBT(CompoundTag nbt) {
-        nbt.putIntArray("pos", new int[]{getPos().getX(), getPos().getY(), getPos().getZ()});
+        nbt.putIntArray("pos", new int[] { getPos().getX(), getPos().getY(), getPos().getZ() });
         nbt.putByte("side", (byte) side.ordinal());
         nbt.putBoolean("isMain", linkIsMain);
         nbt.putLong("robotId", robotTakingId);
@@ -133,16 +130,13 @@ public abstract class DockingStation {
             int y = indexNBT.getInt("j");
             int z = indexNBT.getInt("k");
             pos = new BlockPos(x, y, z);
-        }
-        else {
+        } else {
             int[] array = nbt.getIntArray("pos");
             if (array.length == 3) {
                 pos = new BlockPos(array[0], array[1], array[2]);
-            }
-            else if (array.length != 0) {
+            } else if (array.length != 0) {
                 BCLog.logger.warn("Found an integer array that was not the right length! (" + Arrays.toString(array) + ")");
-            }
-            else {
+            } else {
                 BCLog.logger.warn("Did not find any integer positions! This is a bug!");
             }
         }
@@ -171,8 +165,7 @@ public abstract class DockingStation {
     public boolean linkIsDocked() {
         if (robotTaking() != null) {
             return robotTaking().getDockingStation() == this;
-        }
-        else {
+        } else {
             return false;
         }
     }

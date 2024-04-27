@@ -2,13 +2,12 @@ package buildcraft.api.fuels;
 
 import java.util.Locale;
 
-// Calen
 public enum EnumCoolantType {
     FLUID,
     SOLID,
     ;
 
-    public String getlowerName() {
+    public String getLowerName() {
         return this.name().toLowerCase(Locale.ROOT);
     }
 

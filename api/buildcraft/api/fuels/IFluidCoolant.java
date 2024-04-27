@@ -1,16 +1,16 @@
-/**
- * Copyright (c) 2011-2015, SpaceToad and the BuildCraft Team http://www.mod-buildcraft.com
- * <p>
- * The BuildCraft API is distributed under the terms of the MIT License. Please check the contents of the license, which
- * should be located as "LICENSE.API" in the BuildCraft source code distribution.
- */
+/** Copyright (c) 2011-2015, SpaceToad and the BuildCraft Team http://www.mod-buildcraft.com
+ *
+ * BuildCraft is distributed under the terms of the Minecraft Mod Public License 1.0, or MMPL. Please check the contents
+ * of the license located in http://www.mod-buildcraft.com/MMPL-1.0.txt */
 package buildcraft.api.fuels;
 
 import net.minecraftforge.fluids.FluidStack;
 
-// Calen: ICoolant 1.12.2 -> IFluidCoolant 1.18.2
-// 1.18.2 new class ICoolant super ICoolant, IFluidCoolant
-//public interface ICoolant
+/**
+ * This was named ICoolant in 1.12.2.
+ * In 1.18.2, we differ coolants as {@link EnumCoolantType#FLUID} AND {@link EnumCoolantType#SOLID}.,
+ * {@link IFluidCoolant} and {@link ISolidCoolant} both extends {@link ICoolant}.
+ */
 public interface IFluidCoolant extends ICoolant {
     boolean matchesFluid(FluidStack fluid);
 
@@ -19,5 +19,6 @@ public interface IFluidCoolant extends ICoolant {
      * @return 0 if the input fluid provides no cooling, or a value greater than 0 if it does. */
     float getDegreesCoolingPerMB(FluidStack fluid, float heat);
 
+    /** @return The degrees-of-cooling-per-mb value of the recipe, ignoring whether a correct input is present. */
     float getDegreesCoolingPerMB();
 }

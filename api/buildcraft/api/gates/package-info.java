@@ -4,4 +4,3 @@
  * should be located as "LICENSE.API" in the BuildCraft source code distribution. */
 //@API(apiVersion = "4.1", owner = "buildcraftapi_core", provides = "buildcraftapi_gates")
 package buildcraft.api.gates;
-

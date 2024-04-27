@@ -73,12 +73,10 @@ public final class PipeDefinition {
         public Item.Properties properties = new Item.Properties()
                 .rarity(Rarity.COMMON)
                 .durability(0)
-                .stacksTo(64)
-//                .tab(BCCreativeTab.BC_PIPES_TAB)
-                ;
+                .stacksTo(64);
         public ResourceLocation identifier;
         public String texturePrefix;
-        public String[] textureSuffixes = {""};
+        public String[] textureSuffixes = { "" };
         public IPipeCreator logicConstructor;
         public IPipeLoader logicLoader;
         public PipeFlowType flowType;
@@ -150,9 +148,8 @@ public final class PipeDefinition {
          * @return this. */
         public PipeDefinitionBuilder texSuffixes(String... suffixes) {
             if (suffixes == null || suffixes.length == 0) {
-                textureSuffixes = new String[]{""};
-            }
-            else {
+                textureSuffixes = new String[] { "" };
+            } else {
                 textureSuffixes = suffixes;
             }
             return this;

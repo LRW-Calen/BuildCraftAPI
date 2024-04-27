@@ -3,6 +3,8 @@ package buildcraft.api;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.ModLoadingStage;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -33,7 +35,7 @@ public enum BCModules implements IBuildCraftMod {
     public final String lowerCaseName = name().toLowerCase(Locale.ROOT);
     // Bit hacky, but it works as this is all english
     public final String camelCaseName = name().charAt(0) + lowerCaseName.substring(1);
-    //    private final String modId = "buildcraft" + lowerCaseName;
+    // private final String modId = "buildcraft" + lowerCaseName;
     private final String modId = BUILDCRAFT + lowerCaseName;
     private boolean loaded;
 
@@ -44,27 +46,22 @@ public enum BCModules implements IBuildCraftMod {
         load0();
     }
 
-    /**
-     * Performs the actual loading of {@link #checkLoadStatus()}, except this is thread safe.
-     */
+    /** Performs the actual loading of {@link #checkLoadStatus()}, except this is thread safe. */
     private static synchronized void load0() {
         if (hasChecked) {
             return;
         }
-        // Calen: loading events order is changed from 1.12.2 to 1.18.2...
 //        if (!Loader.instance().hasReachedState(LoaderState.PREINITIALIZATION))
-//        if (ModLoadingContext.get().getActiveContainer().getCurrentState().ordinal() >= ModLoadingStage.CONSTRUCT.ordinal())
-//        {
-//            throw new RuntimeException("You can only use BCModules.isLoaded from pre-init onwards!");
-//        }
+        if (ModLoadingContext.get().getActiveContainer().getCurrentState().ordinal() < ModLoadingStage.CONSTRUCT.ordinal()) {
+            throw new RuntimeException("You can only use BCModules.isLoaded from pre-init onwards!");
+        }
         List<BCModules> found = new ArrayList<>(), missing = new ArrayList<>();
         for (BCModules module : VALUES) {
             module.loaded = ModList.get().isLoaded(module.modId);
 
             if (module.loaded) {
                 found.add(module);
-            }
-            else {
+            } else {
                 missing.add(module);
             }
         }

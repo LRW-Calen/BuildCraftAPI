@@ -14,7 +14,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class SchematicBlockFactoryRegistry {
-    //    private static final Set<SchematicBlockFactory<?>> FACTORIES = new TreeSet<>();
+    // private static final Set<SchematicBlockFactory<?>> FACTORIES = new TreeSet<>();
     private static final Set<SchematicBlockFactory<?>> FACTORIES = new ConcurrentSkipListSet<>();
 
     // Calen thread safety: sometimes "air" not registered just after BCBuildersSchematics#preInit:registerSchematicFactory("air", 0, SchematicBlockAir::predicate, SchematicBlockAir::new)

@@ -14,6 +14,6 @@ public interface IFacadeRegistry {
     IFacade createPhasedFacade(IFacadePhasedState[] states, boolean isHollow);
 
     default IFacade createBasicFacade(IFacadeState state, boolean isHollow) {
-        return createPhasedFacade(new IFacadePhasedState[]{createPhasedState(state, null)}, isHollow);
+        return createPhasedFacade(new IFacadePhasedState[] { createPhasedState(state, null) }, isHollow);
     }
 }

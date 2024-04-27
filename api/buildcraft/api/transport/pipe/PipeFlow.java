@@ -21,13 +21,9 @@ import javax.annotation.Nonnull;
 import java.io.IOException;
 
 public abstract class PipeFlow implements ICapabilityProvider {
-    /**
-     * The ID for completely refreshing the state of this flow.
-     */
+    /** The ID for completely refreshing the state of this flow. */
     public static final int NET_ID_FULL_STATE = 0;
-    /**
-     * The ID for updating what has changed since the last NET_ID_FULL_STATE or NET_ID_UPDATE has been sent.
-     */
+    /** The ID for updating what has changed since the last NET_ID_FULL_STATE or NET_ID_UPDATE has been sent. */
     // Wait, what? How is that a good idea or even sensible to make updates work this way?
     public static final int NET_ID_UPDATE = 1;
 
@@ -45,15 +41,11 @@ public abstract class PipeFlow implements ICapabilityProvider {
         return new CompoundTag();
     }
 
-    /**
-     * Writes a payload with the specified id. Standard ID's are NET_ID_FULL_STATE and NET_ID_UPDATE.
-     */
+    /** Writes a payload with the specified id. Standard ID's are NET_ID_FULL_STATE and NET_ID_UPDATE. */
     public void writePayload(int id, FriendlyByteBuf buffer, Dist side) {
     }
 
-    /**
-     * Reads a payload with the specified id. Standard ID's are NET_ID_FULL_STATE and NET_ID_UPDATE.
-     */
+    /** Reads a payload with the specified id. Standard ID's are NET_ID_FULL_STATE and NET_ID_UPDATE. */
     public void readPayload(int id, FriendlyByteBuf buffer, NetworkDirection side) throws IOException {
     }
 
@@ -75,10 +67,8 @@ public abstract class PipeFlow implements ICapabilityProvider {
 
     public abstract boolean canConnect(Direction face, BlockEntity oTile);
 
-    /**
-     * Used to force a connection to a given tile, even if the {@link PipeBehaviour} wouldn't normally connect to
-     * it.
-     */
+    /** Used to force a connection to a given tile, even if the {@link PipeBehaviour} wouldn't normally connect to
+     * it. */
     public boolean shouldForceConnection(Direction face, BlockEntity oTile) {
         return false;
     }
@@ -95,10 +85,8 @@ public abstract class PipeFlow implements ICapabilityProvider {
     }
 
 //    @Override
-//    public final boolean hasCapability(@Nonnull Capability<?> capability, Direction facing)
-//    {
-////        return getCapability(capability, facing) != null;
-//        return getCapability(capability, facing).isPresent();
+//    public final boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
+//        return getCapability(capability, facing) != null;
 //    }
 
     @Override

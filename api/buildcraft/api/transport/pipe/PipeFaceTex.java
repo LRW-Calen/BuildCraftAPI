@@ -62,12 +62,10 @@ public class PipeFaceTex {
         }
         if (textures.length == 0) {
             hash = -1;
-        }
-        else if (textures.length == 1) {
+        } else if (textures.length == 1) {
             // If the colour is -1 then this will equal the hash below
             hash = textures[0] + getColour(0) + 1;
-        }
-        else {
+        } else {
             int[] cArr = colours;
             {
                 int prevLength = cArr.length;
@@ -88,7 +86,7 @@ public class PipeFaceTex {
     }
 
     private PipeFaceTex(int singleTexture) {
-        textures = new int[]{singleTexture};
+        textures = new int[] { singleTexture };
         colours = EMPTY_INT_ARRAY;
         hash = singleTexture;
     }

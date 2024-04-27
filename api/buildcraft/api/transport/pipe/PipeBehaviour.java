@@ -40,7 +40,7 @@ public abstract class PipeBehaviour implements ICapabilityProvider {
     public void writePayload(FriendlyByteBuf buffer, Dist side) {
     }
 
-    //    public void readPayload(FriendlyByteBuf buffer, Dist side, MessageContext ctx) throws IOException {}
+    // public void readPayload(FriendlyByteBuf buffer, Dist side, MessageContext ctx) throws IOException {}
     public void readPayload(FriendlyByteBuf buffer, NetworkDirection side, NetworkEvent.Context ctx) throws IOException {
     }
 
@@ -69,8 +69,7 @@ public abstract class PipeBehaviour implements ICapabilityProvider {
         return false;
     }
 
-    public boolean onPipeActivate(Player player, HitResult trace, float hitX, float hitY, float hitZ,
-                                  EnumPipePart part) {
+    public boolean onPipeActivate(Player player, HitResult trace, float hitX, float hitY, float hitZ, EnumPipePart part) {
         return false;
     }
 
@@ -80,10 +79,9 @@ public abstract class PipeBehaviour implements ICapabilityProvider {
     public void onTick() {
     }
 
-    // Calen: getCapability(...).isPresent()
+    // 1.18.2: getCapability().isPresent()
 //    @Override
-//    public boolean hasCapability(@Nonnull Capability<?> capability, Direction facing)
-//    {
+//    public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
 //        return getCapability(capability, facing) != null;
 //    }
 

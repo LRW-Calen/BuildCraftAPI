@@ -1,9 +1,6 @@
 package buildcraft.api.mj;
 
-import buildcraft.api.BCModules;
-import buildcraft.core.BCCore;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.Capability;
@@ -16,7 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import javax.annotation.Nonnull;
 import java.text.DecimalFormat;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = BCCore.MODID)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = "buildcraftcore")
 public class MjAPI {
 
     // ################################
@@ -25,18 +22,12 @@ public class MjAPI {
     //
     // ################################
 
-    /**
-     * A single minecraft joule, in micro joules (the power system base unit)
-     */
+    /** A single minecraft joule, in micro joules (the power system base unit) */
     public static final long ONE_MINECRAFT_JOULE = getMjValue();
-    /**
-     * The same as {@link #ONE_MINECRAFT_JOULE}, but a shorter field name
-     */
+    /** The same as {@link #ONE_MINECRAFT_JOULE}, but a shorter field name */
     public static final long MJ = ONE_MINECRAFT_JOULE;
 
-    /**
-     * The decimal format used to display values of MJ to the player. Note that this
-     */
+    /** The decimal format used to display values of MJ to the player. Note that this */
     public static final DecimalFormat MJ_DISPLAY_FORMAT = new DecimalFormat("#,##0.##");
 
     public static IMjEffectManager EFFECT_MANAGER = NullaryEffectManager.INSTANCE;
@@ -47,9 +38,7 @@ public class MjAPI {
     //
     // ###############
 
-    /**
-     * Formats a given MJ value to a player-oriented string. Note that this does not append "MJ" to the value.
-     */
+    /** Formats a given MJ value to a player-oriented string. Note that this does not append "MJ" to the value. */
     public static String formatMj(long microMj) {
         return formatMjInternal(microMj / (double) MJ);
     }
@@ -90,13 +79,9 @@ public class MjAPI {
     @Nonnull
     public static final Capability<IMjConnector> CAP_CONNECTOR = CapabilityManager.get(new CapabilityToken<>() {
     });
-    public static final ResourceLocation CAP_CONNECTOR_ID = new ResourceLocation(BCModules.CORE.getModId(), "mj_connector");
-
     @Nonnull
     public static final Capability<IMjReceiver> CAP_RECEIVER = CapabilityManager.get(new CapabilityToken<>() {
     });
-    public static final ResourceLocation CAP_RECEIVER_ID = new ResourceLocation(BCModules.CORE.getModId(), "mj_receiver");
-
     @Nonnull
     public static final Capability<IMjRedstoneReceiver> CAP_REDSTONE_RECEIVER = CapabilityManager.get(new CapabilityToken<>() {
     });
@@ -117,42 +102,6 @@ public class MjAPI {
         event.register(IMjReadable.class);
         event.register(IMjPassiveProvider.class);
     }
-
-    // Calen 上面直接注册
-//    static
-//    {
-//        CAP_CONNECTOR = CapabilitiesHelper.registerCapability(IMjConnector.class);
-//        CAP_RECEIVER = CapabilitiesHelper.registerCapability(IMjReceiver.class);
-//        CAP_REDSTONE_RECEIVER = CapabilitiesHelper.registerCapability(IMjRedstoneReceiver.class);
-//        CAP_READABLE = CapabilitiesHelper.registerCapability(IMjReadable.class);
-//        CAP_PASSIVE_PROVIDER = CapabilitiesHelper.registerCapability(IMjPassiveProvider.class);
-//    }
-//
-//    public static void attachAbility(AttachCapabilitiesEvent<BlockEntity> event)
-//    {
-//        final BlockEntity be = event.getObject();
-////        if (be instanceof TileDistiller_BC8||be instanceof TilePump)
-////        {
-////            if (!be.getCapability(MjAPI.CAP_RECEIVER).isPresent())
-////            {
-////                event.addCapability(MjAPI.CAP_RECEIVER_ID, new ICapabilityProvider()
-////                {
-////                    @NotNull
-////                    @Override
-////                    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side)
-////                    {
-////                        if (cap == MjAPI.CAP_RECEIVER)
-////                        {
-////                            return (LazyOptional<T>)be.getCapability(MjAPI.CAP_RECEIVER);
-//////                            return LazyOptional.of(() -> ((IFluidHandlerAdv)((TileBC_Neptune) be).getCapability())).cast();
-////                        }
-////                        return LazyOptional.empty();
-////                    }
-////                });
-////            }
-////        }
-//    }
-
 
     private static long getMjValue() {
         return 1_000_000L;

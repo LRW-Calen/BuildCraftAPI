@@ -5,7 +5,6 @@ import buildcraft.api.transport.IInjectable;
 import buildcraft.api.transport.IStripesRegistry;
 import buildcraft.api.transport.pluggable.IPluggableRegistry;
 import buildcraft.api.transport.pluggable.PipePluggable;
-import buildcraft.lib.BCLib;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
@@ -18,7 +17,7 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 
 /** The central holding class for all pipe related registers and methods. */
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = BCLib.MODID) // Calen add for reg caps
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = "buildcraftcore")
 public final class PipeApi {
     public static IPipeRegistry pipeRegistry;
     public static IPluggableRegistry pluggableRegistry;
@@ -60,8 +59,7 @@ public final class PipeApi {
         FluidTransferInfo info = fluidTransferData.get(def);
         if (info == null) {
             return fluidInfoDefault;
-        }
-        else {
+        } else {
             return info;
         }
     }
@@ -70,8 +68,7 @@ public final class PipeApi {
         PowerTransferInfo info = powerTransferData.get(def);
         if (info == null) {
             return powerInfoDefault;
-        }
-        else {
+        } else {
             return info;
         }
     }
@@ -133,14 +130,6 @@ public final class PipeApi {
 
     // Internals
 
-//    static {
-//        CAP_PIPE = CapabilitiesHelper.registerCapability(IPipe.class);
-//        CAP_PLUG = CapabilitiesHelper.registerCapability(PipePluggable.class);
-//        CAP_PIPE_HOLDER = CapabilitiesHelper.registerCapability(IPipeHolder.class);
-//        CAP_INJECTABLE = CapabilitiesHelper.registerCapability(IInjectable.class);
-//    }
-
-    // Calen
     @SubscribeEvent
     public static void registerCapability(RegisterCapabilitiesEvent event) {
         event.register(IPipe.class);

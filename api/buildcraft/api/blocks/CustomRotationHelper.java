@@ -26,11 +26,10 @@ public enum CustomRotationHelper {
 
     public void registerHandlerForAll(Class<? extends Block> blockClass, ICustomRotationHandler handler) {
         for (Block block : ForgeRegistries.BLOCKS) {
-
             Class<? extends Block> foundClass = block.getClass();
             if (blockClass.isAssignableFrom(foundClass)) {
                 if (DEBUG) {
-                    BCLog.logger.info("[api.rotation] Found an assignable core " + block.getRegistryName() + " (" + foundClass + ") for " + blockClass);
+                    BCLog.logger.info("[api.rotation] Found an assignable block " + block.getRegistryName() + " (" + foundClass + ") for " + blockClass);
                 }
                 registerHandlerInternal(block, handler);
             }
@@ -40,11 +39,10 @@ public enum CustomRotationHelper {
     public void registerHandler(Block block, ICustomRotationHandler handler) {
         if (registerHandlerInternal(block, handler)) {
             if (DEBUG) {
-                BCLog.logger.info("[api.rotation] Setting a rotation handler for core " + block.getRegistryName());
+                BCLog.logger.info("[api.rotation] Setting a rotation handler for block " + block.getRegistryName());
             }
-        }
-        else if (DEBUG) {
-            BCLog.logger.info("[api.rotation] Adding another rotation handler for core " + block.getRegistryName());
+        } else if (DEBUG) {
+            BCLog.logger.info("[api.rotation] Adding another rotation handler for block " + block.getRegistryName());
         }
     }
 
@@ -54,8 +52,7 @@ public enum CustomRotationHelper {
             forBlock.add(handler);
             handlers.put(block, forBlock);
             return true;
-        }
-        else {
+        } else {
             handlers.get(block).add(handler);
             return false;
         }

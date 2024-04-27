@@ -82,5 +82,4 @@ public final class CropManager {
         }
         return defaultHandler.isMature(world, state, pos) && defaultHandler.harvestCrop(world, pos, drops);
     }
-
 }

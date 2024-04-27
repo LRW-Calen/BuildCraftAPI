@@ -111,8 +111,7 @@ public interface IScriptableRegistry<E> extends IReloadableRegistry<E> {
             final E o = object;
             if (o != null) {
                 return o;
-            }
-            else {
+            } else {
                 throw new IllegalStateException("This object has been disabled! You must call isPresent() first!");
             }
         }
@@ -122,8 +121,7 @@ public interface IScriptableRegistry<E> extends IReloadableRegistry<E> {
             final String r = reason;
             if (r != null) {
                 return r;
-            }
-            else {
+            } else {
                 throw new IllegalStateException("This object has not been disabled! You must call isPresent() first!");
             }
         }

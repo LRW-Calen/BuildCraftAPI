@@ -1,13 +1,10 @@
 package buildcraft.api.fuels;
 
 import buildcraft.api.BCModules;
-import buildcraft.energy.recipe.CoolantRecipeSerializer;
-import buildcraft.lib.misc.StackUtil;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.fluids.FluidStack;
@@ -28,7 +25,7 @@ public interface ICoolant extends Recipe<Container> {
 
     @Override
     default ItemStack assemble(Container inv) {
-        return StackUtil.EMPTY;
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -38,17 +35,12 @@ public interface ICoolant extends Recipe<Container> {
 
     @Override
     default ItemStack getResultItem() {
-        return StackUtil.EMPTY;
+        return ItemStack.EMPTY;
     }
 
     @Override
     default boolean isSpecial() {
         return true;
-    }
-
-    @Override
-    default RecipeSerializer<?> getSerializer() {
-        return CoolantRecipeSerializer.INSTANCE;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package buildcraft.api.enums;
 
+import buildcraft.api.blocks.ISpring;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.Blocks;
@@ -18,7 +19,7 @@ public enum EnumSpring implements StringRepresentable {
     public final int tickRate, chance;
     public BlockState liquidBlock;
     public boolean canGen = true;
-    //    public Supplier<BlockEntity> tileConstructor;
+    // public Supplier<BlockEntity> tileConstructor;
     public BiFunction<BlockPos, BlockState, BlockEntity> tileConstructor;
 
     private final String lowerCaseName = name().toLowerCase(Locale.ROOT);
@@ -29,9 +30,14 @@ public enum EnumSpring implements StringRepresentable {
         this.liquidBlock = liquidBlock;
     }
 
-//    public static EnumSpring fromState(BlockState state) {
+    public static EnumSpring fromState(BlockState state) {
 //        return state.getValue(BuildCraftProperties.SPRING_TYPE);
-//    }
+        if (state.getBlock() instanceof ISpring spring) {
+            return spring.getType();
+        } else {
+            return null;
+        }
+    }
 
     @Override
     public String getSerializedName() {

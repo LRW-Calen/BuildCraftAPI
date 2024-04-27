@@ -24,8 +24,7 @@ public abstract class ResourceId {
             if (nbt.contains("class")) {
                 // Migration support for 6.4.x
                 cls = RobotManager.getResourceIdByLegacyClassName(nbt.getString("class"));
-            }
-            else {
+            } else {
                 cls = RobotManager.getResourceIdByName(nbt.getString("resourceName"));
             }
 
@@ -33,8 +32,7 @@ public abstract class ResourceId {
             id.readFromNBT(nbt);
 
             return id;
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
 

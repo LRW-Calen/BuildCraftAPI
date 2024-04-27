@@ -24,9 +24,7 @@ public interface IStackFilter {
         return (stack) -> before.matches(stack) && filter.matches(stack);
     }
 
-    /**
-     * Returns example stack to match this filter
-     */
+    /** Returns example stack to match this filter */
     default NonNullList<ItemStack> getExamples() {
         return NonNullList.withSize(0, ItemStack.EMPTY);
     }

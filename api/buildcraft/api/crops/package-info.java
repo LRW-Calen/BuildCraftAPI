@@ -4,5 +4,3 @@
  * should be located as "LICENSE.API" in the BuildCraft source code distribution. */
 //@API(apiVersion = "1.1", owner = "buildcraftapi_core", provides = "buildcraftapi_crops")
 package buildcraft.api.crops;
-
-//import net.minecraftforge.fml.common.API;

@@ -81,8 +81,7 @@ public abstract class PipeEventItem extends PipeEvent {
         public void setStack(ItemStack stack) {
             if (stack == null) {
                 throw new NullPointerException("stack");
-            }
-            else {
+            } else {
                 this.stack = stack;
             }
         }
@@ -150,8 +149,7 @@ public abstract class PipeEventItem extends PipeEvent {
         public void setExcess(ItemStack stack) {
             if (stack == null) {
                 throw new NullPointerException("stack");
-            }
-            else {
+            } else {
                 this.excess = stack;
             }
         }
@@ -331,11 +329,9 @@ public abstract class PipeEventItem extends PipeEvent {
         public void setStack(ItemStack stack) {
             if (stack == null) {
                 throw new NullPointerException("stack");
-            }
-            else if (stack.isEmpty()) {
+            } else if (stack.isEmpty()) {
                 entity.setItem(ItemStack.EMPTY);
-            }
-            else {
+            } else {
                 entity.setItem(stack);
             }
         }

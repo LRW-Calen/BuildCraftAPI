@@ -4,7 +4,6 @@
  * of the license located in http://www.mod-buildcraft.com/MMPL-1.0.txt */
 package buildcraft.api.statements;
 
-
 import buildcraft.api.core.EnumPipePart;
 
 import java.util.Arrays;

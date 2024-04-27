@@ -33,13 +33,10 @@ public class CapabilitiesHelper {
      * @param clazz The type that all instances must derive from.
      * @return The registered {@link Capability} */
 //    @Nonnull
-//    public static <T> Capability<T> registerCapability(Class<T> clazz)
-//    {
-////        return registerCapability(new ThrowingStorage<>(clazz), () ->
-////        {
-////            throw new UnsupportedOperationException("You must create your own instances!");
-////        });
-//        return CapabilityManager.get(new CapabilityToken<>(){});
+//    public static <T> Capability<T> registerCapability(Class<T> clazz) {
+//        return registerCapability(new ThrowingStorage<>(clazz), () -> {
+//            throw new UnsupportedOperationException("You must create your own instances!");
+//        });
 //    }
 
     /** Registers a given type with the {@link CapabilityManager}, but also returns the capability instance.
@@ -49,8 +46,7 @@ public class CapabilitiesHelper {
      * @param factory The factory for the capability.
      * @return The registered {@link Capability} */
 //    @Nonnull
-//    public static <T> Capability<T> registerCapability(CheckedStorage<T> storage, Callable<T> factory)
-//    {
+//    public static <T> Capability<T> registerCapability(CheckedStorage<T> storage, Callable<T> factory) {
 //        return registerCapInternal(storage, factory);
 //    }
 
@@ -59,49 +55,31 @@ public class CapabilitiesHelper {
      * is {@link ThrowingStorage}.
      *
      * @param <T> The type of this storage */
-////    public static abstract class CheckedStorage<T> implements IStorage<T>
-//    public static abstract class CheckedStorage<T> implements ICapabilityProvider, INBTSerializable
-//    {
+//    public static abstract class CheckedStorage<T> implements IStorage<T> {
 //
 //        public final Class<T> clazz;
 //
-//        public CheckedStorage(Class<T> clazz)
-//        {
+//        public CheckedStorage(Class<T> clazz) {
 //            this.clazz = clazz;
 //        }
 //    }
 
     /** A type of {@link CheckedStorage} that throws an {@link UnsupportedOperationException} from both the read and
      * write methods. It is designed for {@link Capability Capability's} that must be written and read separately. */
-//    public static final class ThrowingStorage<T> extends CheckedStorage<T>
-//    {
-//        private T capInnerInstance;
+//    public static final class ThrowingStorage<T> extends CheckedStorage<T> {
 //
-//        public ThrowingStorage(Class<T> clazz)
-//        {
+//        public ThrowingStorage(Class<T> clazz) {
 //            super(clazz);
-//            capInnerInstance = new T();
 //        }
 //
 //        @Override
-////        public Tag writeNBT(Capability<T> capability, T instance, Direction side)
-//        public Tag serializeNBT()
-//        {
+//        public NBTBase writeNBT(Capability<T> capability, T instance, EnumFacing side) {
 //            throw new UnsupportedOperationException("You must create your own instances!");
 //        }
 //
 //        @Override
-////        public void readNBT(Capability<T> capability, T instance, Direction side, Tag nbt)
-//        public void deserializeNBT(Tag nbt)
-//        {
+//        public void readNBT(Capability<T> capability, T instance, EnumFacing side, NBTBase nbt) {
 //            throw new UnsupportedOperationException("You must create your own instances!");
-//        }
-//
-//        @NotNull
-//        @Override
-//        public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side)
-//        {
-//            return null;
 //        }
 //    }
 
@@ -112,41 +90,33 @@ public class CapabilitiesHelper {
     // ################
 
 //    private static final IdentityHashMap<?, ?> __FIELD_CAP_MANAGER_PROVIDERS;
-//
-//    static
-//    {
-//        try
-//        {
+
+//    static {
+//        try {
 //            Field fld = CapabilityManager.class.getDeclaredField("providers");
 //            fld.setAccessible(true);
 //            Object obj = fld.get(CapabilityManager.INSTANCE);
 //            __FIELD_CAP_MANAGER_PROVIDERS = (IdentityHashMap<?, ?>) obj;
-//            if (__FIELD_CAP_MANAGER_PROVIDERS == null)
-//            {
+//            if (__FIELD_CAP_MANAGER_PROVIDERS == null) {
 //                throw new Error("Couldn't find providers!");
 //            }
-//        }
-//        catch (ReflectiveOperationException | ClassCastException e)
-//        {
+//        } catch (ReflectiveOperationException | ClassCastException e) {
 //            throw new Error(e);
 //        }
 //    }
 
 //    @Nonnull
-//    private static <T> Capability<T> registerCapInternal(CheckedStorage<T> storage, Callable<T> factory)
-//    {
+//    private static <T> Capability<T> registerCapInternal(CheckedStorage<T> storage, Callable<T> factory) {
 //        Class<T> clazz = storage.clazz;
 //
 //        CapabilityManager.INSTANCE.register(clazz, storage, factory);
 //
 //        String fullName = clazz.getName().intern();
 //        Object obj = __FIELD_CAP_MANAGER_PROVIDERS.get(fullName);
-//        if (obj == null)
-//        {
+//        if (obj == null) {
 //            throw new IllegalStateException("Apparently we didn't register the capability? How?");
 //        }
-//        if (!(obj instanceof Capability))
-//        {
+//        if (!(obj instanceof Capability)) {
 //            throw new Error("We must have the wrong map! providers.get(key) returned " + obj.getClass()
 //                    + " rather than " + Capability.class);
 //        }
@@ -155,46 +125,37 @@ public class CapabilitiesHelper {
 //        // compare the given class with the VoidStorage class, as
 //        // Capability<T> doesn't have a way of doing that directly.
 //        IStorage<?> cStorage = cap.getStorage();
-//        if (!(cStorage instanceof CheckedStorage))
-//        {
+//        if (!(cStorage instanceof CheckedStorage)) {
 //            throw new IllegalStateException(
 //                    "Returned capability storage has a different storage class than expected! " + cStorage.getClass());
 //        }
 //        CheckedStorage<?> vStorage = (CheckedStorage<?>) cStorage;
-//        if (vStorage.clazz != clazz)
-//        {
+//        if (vStorage.clazz != clazz) {
 //            throw new IllegalStateException(
 //                    "Returned capability storage has a different class than expected! " + vStorage.clazz + " vs " + clazz);
 //        }
 //        return (Capability<T>) cap;
 //    }
 
-//    /**
-//     * Prefer {@link #registerCapability(Class)} or other methods over this one: this will be removed at some point in
-//     * the future. Most likely before beta.
-//     */
+    /** Prefer {@link #registerCapability(Class)} or other methods over this one: this will be removed at some point in
+     * the future. Most likely before beta. */
 //    @Nonnull
 //    @Deprecated
-//    public static <T> Capability<T> ensureRegistration(Capability<T> cap, Class<T> clazz)
-//    {
-//        if (cap == null)
-//        {
+//    public static <T> Capability<T> ensureRegistration(Capability<T> cap, Class<T> clazz) {
+//        if (cap == null) {
 //            throw new Error("Capability registration failed for " + clazz);
 //        }
 //        return cap;
 //    }
 
-//    public static class VoidStorage<T> implements Capability.IStorage<T>
-//    {
+//    public static class VoidStorage<T> implements Capability.IStorage<T> {
 //        @Override
-//        public Tag writeNBT(Capability<T> capability, T instance, Direction side)
-//        {
+//        public NBTBase writeNBT(Capability<T> capability, T instance, EnumFacing side) {
 //            throw new IllegalStateException("You must create your own instances!");
 //        }
 //
 //        @Override
-//        public void readNBT(Capability<T> capability, T instance, Direction side, Tag nbt)
-//        {
+//        public void readNBT(Capability<T> capability, T instance, EnumFacing side, NBTBase nbt) {
 //            throw new IllegalStateException("You must create your own instances!");
 //        }
 //    }

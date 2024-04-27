@@ -160,8 +160,7 @@ public abstract class PipeEventFluid extends PipeEvent {
             if (allowed.contains(side)) {
                 allowed.clear();
                 allowed.add(side);
-            }
-            else {
+            } else {
                 allowed.clear();
             }
         }

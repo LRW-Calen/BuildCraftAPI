@@ -1,7 +1,6 @@
 package buildcraft.api.recipes;
 
-// Calen
-public enum AssemblyRecipeType {
+public enum EnumAssemblyRecipeType {
     BASIC,
     FACADE,
 }

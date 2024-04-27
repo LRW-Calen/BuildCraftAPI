@@ -1,15 +1,14 @@
 package buildcraft.api.enums;
 
-import buildcraft.silicon.BCSiliconItems;
-import buildcraft.silicon.item.ItemRedstoneChipset;
+import buildcraft.api.BCItems;
+import buildcraft.api.items.IChipset;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Locale;
 
-//public enum EnumRedstoneChipset implements IStringSerializable
+// public enum EnumRedstoneChipset implements IStringSerializable
 public enum EnumRedstoneChipset implements StringRepresentable {
     RED,
     IRON,
@@ -20,31 +19,17 @@ public enum EnumRedstoneChipset implements StringRepresentable {
     private final String name = name().toLowerCase(Locale.ROOT);
 
     public ItemStack getStack(int stackSize) {
-//        Item chipset = BCItems.Silicon.REDSTONE_CHIPSET;
-        RegistryObject<Item> chipset = BCSiliconItems.chipsetRedstone;
+        Item chipset = switch (this) {
+            case RED -> BCItems.Silicon.CHIPSET_REDSTONE;
+            case IRON -> BCItems.Silicon.CHIPSET_IRON;
+            case GOLD -> BCItems.Silicon.CHIPSET_GOLD;
+            case QUARTZ -> BCItems.Silicon.CHIPSET_QUARTZ;
+            case DIAMOND -> BCItems.Silicon.CHIPSET_DIAMOND;
+        };
         if (chipset == null) {
             return ItemStack.EMPTY;
-        }
-        // ordinal() -> meta
-        // 0 红石
-        // 1 铁
-        // 2 金
-        // 3 石英
-        // 4 钻石
-//        return new ItemStack(chipset, stackSize, ordinal());
-        switch (this) {
-            case RED:
-                return new ItemStack(BCSiliconItems.chipsetRedstone.get(), stackSize);
-            case IRON:
-                return new ItemStack(BCSiliconItems.chipsetIron.get(), stackSize);
-            case GOLD:
-                return new ItemStack(BCSiliconItems.chipsetGold.get(), stackSize);
-            case QUARTZ:
-                return new ItemStack(BCSiliconItems.chipsetQuartz.get(), stackSize);
-            case DIAMOND:
-                return new ItemStack(BCSiliconItems.chipsetDiamond.get(), stackSize);
-            default:
-                return ItemStack.EMPTY;
+        } else {
+            return new ItemStack(BCItems.Silicon.CHIPSET_GOLD, stackSize);
         }
     }
 
@@ -54,11 +39,11 @@ public enum EnumRedstoneChipset implements StringRepresentable {
 
     public static EnumRedstoneChipset fromStack(ItemStack stack) {
 //        if (stack == null)
-        if (stack == null || stack.getItem().getClass() != ItemRedstoneChipset.class) {
+        if (stack == null || !(stack.getItem() instanceof IChipset)) {
             return RED;
         }
 //        return fromOrdinal(stack.getMetadata());
-        return ((ItemRedstoneChipset) stack.getItem()).type;
+        return ((IChipset) stack.getItem()).getType();
     }
 
     public static EnumRedstoneChipset fromOrdinal(int ordinal) {

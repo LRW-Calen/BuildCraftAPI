@@ -49,15 +49,13 @@ public class SafeTimeTracker {
         if (currentTime < lastMark) {
             lastMark = currentTime;
             return false;
-        }
-        else if (lastMark + delay + lastRandomDelay <= currentTime) {
+        } else if (lastMark + delay + lastRandomDelay <= currentTime) {
             duration = currentTime - lastMark;
             lastMark = currentTime;
             lastRandomDelay = (int) (Math.random() * randomRange);
 
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

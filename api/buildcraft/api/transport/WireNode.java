@@ -45,8 +45,7 @@ public class WireNode {
         EnumWirePart nPart = EnumWirePart.get(nx, ny, nz);
         if (nx < 0 || ny < 0 || nz < 0 || nx > 1 || ny > 1 || nz > 1) {
             return new WireNode(pos.relative(face), nPart);
-        }
-        else {
+        } else {
             return new WireNode(pos, nPart);
         }
     }

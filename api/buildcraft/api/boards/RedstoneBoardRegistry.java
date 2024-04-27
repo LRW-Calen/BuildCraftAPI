@@ -4,7 +4,6 @@
  * should be located as "LICENSE.API" in the BuildCraft source code distribution. */
 package buildcraft.api.boards;
 
-
 import net.minecraft.nbt.CompoundTag;
 
 import java.util.Collection;

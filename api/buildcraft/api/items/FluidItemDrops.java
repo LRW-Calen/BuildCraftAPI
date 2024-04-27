@@ -1,6 +1,5 @@
 package buildcraft.api.items;
 
-import buildcraft.core.item.ItemFragileFluidContainer;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -8,7 +7,7 @@ import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.registries.RegistryObject;
 
 public class FluidItemDrops {
-    public static RegistryObject<ItemFragileFluidContainer> item;
+    public static RegistryObject<? extends IItemFluidShard> item;
 
     public static void addFluidDrops(NonNullList<ItemStack> toDrop, FluidStack... fluids) {
         if (item != null) {

@@ -9,7 +9,6 @@ import javax.annotation.Nullable;
 public interface IItemPipe {
     PipeDefinition getDefinition();
 
-    // Calen
     @Nullable
     DyeColor getColour();
 }

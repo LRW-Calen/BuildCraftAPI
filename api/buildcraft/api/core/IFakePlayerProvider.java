@@ -1,9 +1,7 @@
-/**
- * Copyright (c) 2011-2015, SpaceToad and the BuildCraft Team http://www.mod-buildcraft.com
- * <p>
- * The BuildCraft API is distributed under the terms of the MIT License. Please check the contents of the license, which
- * should be located as "LICENSE.API" in the BuildCraft source code distribution.
- */
+/** Copyright (c) 2011-2015, SpaceToad and the BuildCraft Team http://www.mod-buildcraft.com
+ *
+ * BuildCraft is distributed under the terms of the Minecraft Mod Public License 1.0, or MMPL. Please check the contents
+ * of the license located in http://www.mod-buildcraft.com/MMPL-1.0.txt */
 package buildcraft.api.core;
 
 import com.mojang.authlib.GameProfile;
@@ -14,7 +12,7 @@ import net.minecraftforge.common.util.FakePlayer;
 public interface IFakePlayerProvider {
     /**
      * Returns the generic buildcraft fake player. Note that you shouldn't use this anymore, as you should store the
-     * UUID of the real player who created the core or entity that calls this.
+     * UUID of the real player who created the block or entity that calls this.
      */
     @Deprecated
     FakePlayer getBuildCraftPlayer(ServerLevel world);

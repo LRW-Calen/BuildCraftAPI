@@ -1,13 +1,10 @@
-/**
- * Copyright (c) 2011-2015, SpaceToad and the BuildCraft Team http://www.mod-buildcraft.com
- * <p>
- * The BuildCraft API is distributed under the terms of the MIT License. Please check the contents of the license, which
- * should be located as "LICENSE.API" in the BuildCraft source code distribution.
- */
+/** Copyright (c) 2011-2015, SpaceToad and the BuildCraft Team http://www.mod-buildcraft.com
+ *
+ * BuildCraft is distributed under the terms of the Minecraft Mod Public License 1.0, or MMPL. Please check the contents
+ * of the license located in http://www.mod-buildcraft.com/MMPL-1.0.txt */
 package buildcraft.api.fuels;
 
 import buildcraft.api.BCModules;
-import buildcraft.lib.misc.StackUtil;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
@@ -38,7 +35,7 @@ public interface IFuel extends Recipe<Container> {
 
     @Override
     default ItemStack assemble(Container inv) {
-        return StackUtil.EMPTY;
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -48,7 +45,7 @@ public interface IFuel extends Recipe<Container> {
 
     @Override
     default ItemStack getResultItem() {
-        return StackUtil.EMPTY;
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -56,18 +53,8 @@ public interface IFuel extends Recipe<Container> {
         return true;
     }
 
-    // Calen
     @Override
     default RecipeType<IFuel> getType() {
         return TYPE;
     }
-
-//    @Override
-//    public NonNullList<Ingredient> getIngredients()
-//    {
-//        NonNullList<Ingredient> nonnulllist = NonNullList.create();
-//        nonnulllist.add(Ingredient.of);
-//        nonnulllist.add(this.middleInput);
-//        nonnulllist.add(this.bottomOptional);
-//        return nonnulllist;
 }
