@@ -72,6 +72,7 @@ public class BCItems {
         public static final Item CHIPSET_DIAMOND = null;
 
         public static final Item PLUG_PULSAR = null;
+        public static final Item PLUG_FACADE = null;
     }
 
     @ObjectHolder("buildcraftrobotics")

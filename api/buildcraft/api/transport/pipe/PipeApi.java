@@ -17,7 +17,6 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 
 /** The central holding class for all pipe related registers and methods. */
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = "buildcraftcore")
 public final class PipeApi {
     public static IPipeRegistry pipeRegistry;
     public static IPluggableRegistry pluggableRegistry;

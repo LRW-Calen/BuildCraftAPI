@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nonnull;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = "buildcraftcore")
 public class TilesAPI {
     @Nonnull
     public static final Capability<IControllable> CAP_CONTROLLABLE = CapabilityManager.get(new CapabilityToken<>() {
