@@ -29,7 +29,7 @@ public enum EnumRedstoneChipset implements StringRepresentable {
         if (chipset == null) {
             return ItemStack.EMPTY;
         } else {
-            return new ItemStack(BCItems.Silicon.CHIPSET_GOLD, stackSize);
+            return new ItemStack(chipset, stackSize);
         }
     }
 
