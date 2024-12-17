@@ -10,7 +10,7 @@ import net.minecraft.world.level.storage.WritableLevelData;
 import java.util.function.Supplier;
 
 public abstract class IFakeWorld extends Level {
-    protected IFakeWorld(WritableLevelData data, ResourceKey<Level> dim, Holder<DimensionType> dimensionType, Supplier<ProfilerFiller> profiler, boolean pIsClientSide, boolean p_204154_, long p_204155_) {
-        super(data, dim, dimensionType, profiler, pIsClientSide, p_204154_, p_204155_);
+    protected IFakeWorld(WritableLevelData data, ResourceKey<Level> dim, Holder<DimensionType> dimensionType, Supplier<ProfilerFiller> profiler, boolean pIsClientSide, boolean isDebug, long biomeZoomSeed) {
+        super(data, dim, dimensionType, profiler, pIsClientSide, isDebug, biomeZoomSeed);
     }
 }
