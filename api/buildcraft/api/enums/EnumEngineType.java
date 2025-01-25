@@ -11,7 +11,8 @@ public enum EnumEngineType implements StringRepresentable, IEngineType {
     CREATIVE("core", "creative"),
     ;
 
-    public final String unlocalizedTag;
+    // public final String unlocalizedTag;
+    private final String unlocalizedTag;
     @Deprecated(forRemoval = true)
     public final String resourceLocation;
 
@@ -22,11 +23,10 @@ public enum EnumEngineType implements StringRepresentable, IEngineType {
         resourceLocation = "buildcraft" + mod + ":block/engine/inv/" + loc;
     }
 
-    @Deprecated(forRemoval = true)
-    @Override
-    public String getItemModelLocation() {
-        return resourceLocation;
-    }
+//    @Override
+//    public String getItemModelLocation() {
+//        return resourceLocation;
+//    }
 
     @Override
     public String getSerializedName() {
