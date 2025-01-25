@@ -22,11 +22,10 @@ public enum EnumEngineType implements StringRepresentable, IEngineType {
         resourceLocation = "buildcraft" + mod + ":blocks/engine/inv/" + loc;
     }
 
-    @Deprecated(forRemoval = true)
-    @Override
-    public String getItemModelLocation() {
-        return resourceLocation;
-    }
+//    @Override
+//    public String getItemModelLocation() {
+//        return resourceLocation;
+//    }
 
     @Override
     public String getSerializedName() {
